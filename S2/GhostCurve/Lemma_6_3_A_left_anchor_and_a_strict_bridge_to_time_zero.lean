@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LeftAnchor.AffineInterpolation
+
+/-!
+# A left anchor and a strict bridge
+
+This module records the quantitative anchor and its subunit-slope bridge to time zero.
+-/
 
 public section
 

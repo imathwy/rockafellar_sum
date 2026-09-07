@@ -1,7 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import S2.GhostCurve.foldedDetector_expansion
 public import S2.GhostCurve.foldedDetector_remainder_bounds
+
+/-!
+# Folded-detector expansions and bounds
+
+This module records exact expansions and lower-order estimates for folded detector vertices.
+-/
 
 public section
 

@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzEmbedding.AffineInterpolation
+
+/-!
+# Affine interpolation in the Lorentz image
+
+This module records that selected affine interpolations remain in the Lorentz
+embedding range.
+-/
 
 public section
 

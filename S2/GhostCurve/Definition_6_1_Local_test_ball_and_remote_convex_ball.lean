@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.C0Seq.RemoteBall
+
+/-!
+# Local and Remote Test Balls
+
+This module exposes the local test ball, far point, and remote convex ball data.
+-/
 
 @[expose] public section
 

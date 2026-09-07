@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LeftDyadicVertex
+
+/-!
+# Left-Dyadic Vertices Approaching the Ghost
+
+This module exposes the selected vertex specifications and dyadic-time formulas.
+-/
 
 /- Construction 6.4 (Left dyadic vertices approaching the ghost) -/
 #check (Lorentz.leftVertex_spec :

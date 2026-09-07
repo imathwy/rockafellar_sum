@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.FoldedRightVertex
+
+/-!
+# Folded Right-Hand Detector Vertices
+
+This module exposes the perturbation and vertex components of the folded sequence.
+-/
 
 section
 
