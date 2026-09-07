@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Detector.FavorableSign
+
+/-!
+# Favorable Detector Pairs
+
+This module exposes detector pairs and signs with positive readings.
+-/
 
 @[expose] public section
 

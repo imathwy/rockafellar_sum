@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve
+
+/-!
+# The assembled ghost curve
+
+This module exposes the piecewise global negative-coordinate curve and its branch formulas.
+-/
 
 public section
 

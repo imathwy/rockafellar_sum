@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzEmbedding.FutureRay
+
+/-!
+# Geometry of the future ray
+
+This module records embedding, cone, slope, and energy bounds on the future ray.
+-/
 
 /- Lemma 6.17b (Future ray lies in the Lorentz future cone) (1) -/
 #check (Lorentz.futureRay_mem_embeddingRange :

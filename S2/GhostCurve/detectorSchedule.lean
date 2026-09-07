@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Combinatorics.DetectorSchedule
+
+/-!
+# Detector Schedule
+
+This module exposes countability and infinite repetition of detector triples.
+-/
 
 public section
 

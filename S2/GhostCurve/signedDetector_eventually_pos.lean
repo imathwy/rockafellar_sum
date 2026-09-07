@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzCoordinates.DetectorIndex.Pairing
 public import S2.GhostCurve.exists_detector_pair_sign
+
+/-!
+# Eventual positivity of signed detector readings
+
+This module exposes convergence and eventual lower bounds along favorable
+detector occurrences.
+-/
 
 public section
 

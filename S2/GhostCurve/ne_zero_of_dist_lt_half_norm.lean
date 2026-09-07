@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.Normed.Group.Approximation
+
+/-!
+# Nonzero vectors under half-norm perturbations
+
+This module exposes elementary norm estimates preserving a nonzero coordinate
+under controlled approximation.
+-/
 
 public section
 

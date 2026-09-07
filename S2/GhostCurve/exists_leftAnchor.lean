@@ -1,7 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LeftAnchor
 public import S2.GhostCurve.Lemma_6_2_A_negative_energy_time_zero_point_away_from_U
+
+/-!
+# Quantitative Left Anchor
+
+This module exposes the quantitative left-anchor existence result.
+-/
 
 public section
 

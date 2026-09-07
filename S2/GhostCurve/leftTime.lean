@@ -1,7 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.LeftDyadicTemplate
 public import S2.GhostCurve.Lemma_6_2_A_negative_energy_time_zero_point_away_from_U
+
+/-!
+# Left dyadic times and templates
+
+This module records their formulas, limits, and strict Lipschitz bounds.
+-/
 
 public section
 
