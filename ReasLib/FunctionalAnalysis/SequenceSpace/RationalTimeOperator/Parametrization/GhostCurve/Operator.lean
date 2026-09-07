@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.SetValuedOperator
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Graph
+
+/-!
+# Ghost-curve set-valued operator
+
+This module turns the ambient ghost-curve graph into a set-valued operator and
+exposes its graph bridge.
+-/
 
 public section
 

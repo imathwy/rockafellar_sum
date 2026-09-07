@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Analysis.Normed.Module.Normalize
 public import Mathlib.Analysis.Normed.Operator.BoundedLinearMaps
+
+/-!
+# Normalized vectors outside an operator range
+
+This module packages the unit-norm witness supplied by a nonsurjective
+continuous linear map together with its range-exclusion specification.
+-/
 
 public section
 

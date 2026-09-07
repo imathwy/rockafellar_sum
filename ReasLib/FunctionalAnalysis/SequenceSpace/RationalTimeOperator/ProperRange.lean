@@ -1,8 +1,20 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.StrongDual
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.PositiveDefinite
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Transpose.C0Range
+
+/-!
+# Proper range of the positive operator
+
+This module records the nonsurjectivity of the rational-time positive operator
+on `L1Seq`.
+-/
 
 namespace L1Seq
 
