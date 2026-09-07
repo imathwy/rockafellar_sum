@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic
 public import ReasLib.MeasureTheory.UnitL2.RationalIntervalIndicator
+
+/-!
+# Rational interval-indicator integrals
+
+This module identifies inner products with rational interval-indicator
+vectors with the corresponding interval integrals.
+-/
 
 public section
 

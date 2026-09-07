@@ -1,3 +1,8 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Pairing
@@ -6,6 +11,13 @@ public import ReasLib.MeasureTheory.UnitL2.Primitive
 public import ReasLib.MeasureTheory.UnitL2.Primitive.Holder
 public import ReasLib.MeasureTheory.UnitL2.RationalIntervalIndicator.Integral
 public import ReasLib.Topology.RationalTime
+
+/-!
+# Adjoint range criterion
+
+This module connects the interval-coordinate adjoint with the canonical
+`C0Seq` range through rational-time primitive samples.
+-/
 
 public section
 

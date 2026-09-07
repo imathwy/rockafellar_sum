@@ -1,3 +1,8 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.Normed.LorentzCone.HilbertProd2
@@ -5,6 +10,13 @@ public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.DualPairing
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzCoordinates
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.QuadraticIdentity
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.SymmetricPart
+
+/-!
+# Parametrized Lorentz energy
+
+This module supplies the quadratic and symmetric pairing formulas for
+parametrized Lorentz points.
+-/
 
 public section
 

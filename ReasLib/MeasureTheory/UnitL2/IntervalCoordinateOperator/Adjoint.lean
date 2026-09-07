@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.Sequence.L1Synthesis.Transpose
 public import ReasLib.MeasureTheory.UnitL2.IntervalCoordinateOperator
+
+/-!
+# Interval-coordinate adjoint
+
+This module defines the transpose of the interval-coordinate operator through
+the real Riesz identification of `UnitL2`.
+-/
 
 public section
 

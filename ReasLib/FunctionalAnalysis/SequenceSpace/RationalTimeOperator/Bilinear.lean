@@ -1,9 +1,21 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Analysis.InnerProductSpace.LinearMap
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Pairing
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator
 public import ReasLib.MeasureTheory.UnitL2.IntervalCoordinateOperator
+
+/-!
+# Positive-operator bilinear form
+
+This module records the bilinear and quadratic identities induced by the
+positive interval-coordinate operator on `L1Seq`.
+-/
 
 public section
 

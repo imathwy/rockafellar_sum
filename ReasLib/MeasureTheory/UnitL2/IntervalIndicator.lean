@@ -1,8 +1,20 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.MeasureTheory.UnitL2
 public import Mathlib.MeasureTheory.Function.LpSpace.Indicator
 public import Mathlib.Topology.UnitInterval
+
+/-!
+# Interval indicator vectors
+
+This module defines the `UnitL2` representatives of interval indicators and
+their basic almost-everywhere identities.
+-/
 
 @[expose] public section
 

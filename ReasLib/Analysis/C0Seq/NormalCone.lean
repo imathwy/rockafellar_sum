@@ -1,8 +1,20 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.C0Seq.Localization
 public import ReasLib.Analysis.Convex.NormalCone
 public import ReasLib.Analysis.Sequence.L1
+
+/-!
+# Normal cone on `C0Seq`
+
+This module specializes normal-cone domain, origin, and pairing facts to the
+fixed closed-ball constraint on real `C0Seq`.
+-/
 
 public section
 
