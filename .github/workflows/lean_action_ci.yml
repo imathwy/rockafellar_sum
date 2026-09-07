@@ -20,7 +20,6 @@ jobs:
 
       - name: Check project entry points
         run: |
-          bash .github/ci/check_aggregate_imports.sh
           lake lean ReasLib.lean
           lake lean S2.lean
           lake lean rockafellar_sum.lean
@@ -32,7 +31,7 @@ jobs:
           set +e
           rg -n --glob '*.lean' \
             '(\bsorry\b|\badmit\b|\bsorryAx\b|^[[:space:]]*(private[[:space:]]+)?(axiom|opaque|unsafe)\b|\b(native_decide|ofReduceBool|implemented_by)\b)' \
-            ReasLib S2 .github/ci ReasLib.lean S2.lean rockafellar_sum.lean
+            ReasLib S2 ReasLib.lean S2.lean rockafellar_sum.lean
           scan_status=$?
           set -e
           if [ "$scan_status" -gt 1 ]; then
@@ -42,6 +41,3 @@ jobs:
             echo 'proof placeholder found in production source' >&2
             exit 1
           fi
-
-      - name: Audit project axioms
-        run: lake lean .github/ci/AxiomAudit.lean

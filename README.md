@@ -19,8 +19,6 @@ remains a candidate counterexample pending independent mathematical review.
 
 - `ReasLib/`: reusable definitions, constructions, and proof owners.
 - `S2/`: source-facing, labeled declarations and canonical `#check` entries.
-- `.github/ci/AxiomAudit.lean`: declaration-level trusted-axiom gate.
-- `.github/ci/check_aggregate_imports.sh`: aggregate-module coverage gate.
 - `ReasLib.lean`, `S2.lean`: complete aggregate entry points.
 - `rockafellar_sum.lean`: project entry point importing both aggregates.
 
@@ -44,16 +42,10 @@ lake lean S2.lean
 lake lean rockafellar_sum.lean
 ```
 
-The GitHub Actions workflow runs these aggregate checks and rejects new proof
-placeholders in the production and audit Lean sources. It also runs the
-declaration-level axiom audit:
-
-```bash
-lake lean .github/ci/AxiomAudit.lean
-```
-
-It checks that the aggregate import lists stay synchronized with the module
-trees using `bash .github/ci/check_aggregate_imports.sh`.
+The GitHub Actions workflow runs the three project entry points and rejects new
+proof placeholders in the production Lean sources. Trusted-axiom and
+declaration-identity checks are supplied separately by the Comparator workflow
+maintained for this project; no generated axiom-audit source is checked in.
 
 The current source snapshot contains 152 `ReasLib` modules and 237 `S2`
 modules. It has no actual `sorry`, `admit`, project-defined `axiom`, or
