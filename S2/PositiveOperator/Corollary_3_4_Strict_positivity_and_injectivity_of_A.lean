@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.PositiveDefinite
+
+/-!
+# Strict Positivity and Injectivity
+
+This module exposes the quadratic identity, strict positivity, and injectivity of `A`.
+-/
 
 /- The quadratic identity identifies the pairing with the squared norm of the
 interval-coordinate image. -/

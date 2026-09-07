@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.QuadraticIdentity
+
+/-!
+# Quadratic identity for the positive operator
+
+This module relates the quadratic pairing to the Gram sum and interval-coordinate norm.
+-/
 
 #check (L1Seq.positiveOperator_quadratic_eq_gramTsum :
   ∀ a : L1Seq,

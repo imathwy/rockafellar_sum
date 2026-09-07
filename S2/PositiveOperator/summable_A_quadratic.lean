@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Quadratic
+
+/-!
+# Absolute summability of the positive-operator quadratic expansion
+
+This module records absolute summability of the diagonal, off-diagonal, and
+kernel series associated with `L1Seq.positiveOperator`.
+-/
 
 /- Lemma 3.3a (Absolute summability of the A quadratic expansion) (1):
 the diagonal scalar series in `⟨positiveOperator a, a⟩` is absolutely summable. -/

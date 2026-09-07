@@ -1,8 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.Normed.Operator.Range
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Pairing
 public import S2.PositiveOperator.Lemma_3_8_The_range_of_A_is_proper
+
+/-!
+# A missing range vector
+
+This module records a unit vector outside the positive-operator range and its coordinate functional.
+-/
 
 /- Definition 3.9 (A missing range vector and its coordinate functional) (1):
 the selected vector is outside the range of `L1Seq.positiveOperator` and has norm one. -/

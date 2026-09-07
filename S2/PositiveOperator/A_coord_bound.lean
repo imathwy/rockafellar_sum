@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator
+
+/-!
+# Positive-Operator Coordinate Bounds
+
+This module exposes coordinate estimates and tail convergence for the positive operator.
+-/
 
 public section
 
