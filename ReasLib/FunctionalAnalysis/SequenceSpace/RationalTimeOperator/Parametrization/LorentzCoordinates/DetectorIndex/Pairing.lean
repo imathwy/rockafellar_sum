@@ -1,9 +1,20 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Topology.Order.OrderClosed
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.DualPairing
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Detector
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzCoordinates.DetectorIndex
+
+/-!
+# Detector-index pairing limits
+
+This module records signed detector readings along selected occurrence subsequences.
+-/
 
 public section
 

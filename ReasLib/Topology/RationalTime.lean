@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Topology.Sequences
 public import ReasLib.Order.RationalTime
+
+/-!
+# Rational-Time Enumeration
+
+This module records density and tail-subsequence properties of the canonical
+rational-time enumeration.
+-/
 
 open Topology
 

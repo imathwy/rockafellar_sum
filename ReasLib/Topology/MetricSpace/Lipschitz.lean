@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Analysis.Normed.Group.Uniform
+
+/-!
+# Lipschitz Bounds Across an Anchor
+
+This module provides a global Lipschitz criterion from two half-line bounds and
+a radial norm estimate.
+-/
 
 universe u
 

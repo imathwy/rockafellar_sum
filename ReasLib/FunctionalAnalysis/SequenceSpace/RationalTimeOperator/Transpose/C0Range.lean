@@ -1,8 +1,20 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.SymmetricPart
 public import ReasLib.MeasureTheory.UnitL2.IntervalCoordinateOperator.Adjoint.C0Range
 public import ReasLib.MeasureTheory.UnitL2.IntervalCoordinateOperator.Injective
+
+/-!
+# Transpose range transversality
+
+This module proves that the reindexed transpose has trivial intersection with
+the canonical `C0Seq` pairing range.
+-/
 
 namespace L1Seq
 

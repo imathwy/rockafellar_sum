@@ -1,8 +1,20 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Operator.Realization
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzEmbedding.FutureRay
 public import ReasLib.Analysis.C0Seq.Localization
+
+/-!
+# Constraint qualification for the ghost-curve operator
+
+This module supplies a point in the ghost-curve operator domain and the
+interior of the fixed closed-ball constraint.
+-/
 
 public section
 

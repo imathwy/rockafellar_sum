@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Operator
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Localization
+
+/-!
+# Local nonnegative energy on the ghost-curve operator graph
+
+This module transfers the localized nonnegative quadratic-pairing estimate
+from the ghost curve to its set-valued operator graph.
+-/
 
 public section
 

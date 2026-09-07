@@ -1,7 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.AffineInterpolation
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LeftDyadicVertex
+
+/-!
+# Left-Dyadic Affine Interpolation
+
+This module controls remote-ball membership along affine edges between left dyadic vertices.
+-/
 
 public section
 
