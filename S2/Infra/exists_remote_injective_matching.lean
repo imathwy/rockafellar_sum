@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Topology.Sequences
+
+/-!
+# Finite injective remote matching
+
+This source-facing module records simultaneous approximation by distinct tail
+indices of a dense sequence.
+-/
 
 open Filter Topology
 

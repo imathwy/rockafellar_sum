@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 import ReasLib.MeasureTheory.UnitL2
+
+/-!
+# Real `L2` on the unit interval
+
+This source-facing module records the canonical space, representative map, and
+Hilbert-space instances.
+-/
 
 /- Infrastructure B.1 (Real L² on the unit interval) -/
 #check (UnitL2 : Type)

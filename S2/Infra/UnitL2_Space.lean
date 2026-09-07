@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.MeasureTheory.UnitL2
+
+/-!
+# The real `UnitL2` space
+
+This source-facing module records the unit-interval `L2` type and its canonical
+almost-everywhere representative API.
+-/
 
 #check (UnitL2 : Type)
 #check (UnitL2.toAEEqFun :

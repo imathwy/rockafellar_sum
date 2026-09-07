@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.InnerProductSpace.HilbertProd2
+
+/-!
+# Two-coordinate Hilbert products
+
+This source-facing module records the canonical product type, projections, and
+Euclidean formulas used for Lorentz coordinates.
+-/
 
 @[expose] public section
 
