@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.RemoteDetectorPoint.Pairing
+
+/-!
+# Detector pairing identity
+
+This source-facing module records the canonical remote-detector pairing
+identity used in the proof of Lemma 5.10.
+-/
 
 public section
 
