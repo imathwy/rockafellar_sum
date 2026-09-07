@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.Convex.NormalCone
+
+/-!
+# Normal-cone sum estimates
+
+This module proves graph membership, monotonicity, and quadratic bounds for
+adding a normal-cone operator.
+-/
 
 public section
 

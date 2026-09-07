@@ -1,9 +1,21 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.InnerProductSpace.HilbertProd2
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Pairing
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.Point
 public import ReasLib.MeasureTheory.UnitL2.IntervalCoordinateOperator
+
+/-!
+# Lorentz coordinates
+
+This module defines the positive and negative coordinates on a parametrized
+Lorentz subspace.
+-/
 
 public section
 

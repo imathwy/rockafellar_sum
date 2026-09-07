@@ -1,8 +1,20 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.LinearAlgebra.BilinearForm.Properties
 public import Mathlib.LinearAlgebra.QuadraticForm.Basic
 public import Mathlib.Analysis.Normed.Operator.NormedSpace
+
+/-!
+# Continuous dual pairings
+
+This module defines the bundled continuous dual pairing and its quadratic,
+bilinear, and symmetric-form API.
+-/
 
 public section
 

@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.DualPairing
+
+/-!
+# Monotone polars for dual pairings
+
+This module defines monotonicity, monotone polars, and their maximality
+characterizations for a continuous dual pairing.
+-/
 
 public section
 

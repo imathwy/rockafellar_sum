@@ -1,8 +1,20 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.C0Seq.NormalCone
 public import ReasLib.Analysis.Convex.NormalCone.ClosedBall
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.DualPairing.Surjective
+
+/-!
+# Closed-ball normal cone on `C0Seq`
+
+This module specializes the generic closed-ball maximality result to the
+canonical `C0Seq` dual pairing.
+-/
 
 public section
 

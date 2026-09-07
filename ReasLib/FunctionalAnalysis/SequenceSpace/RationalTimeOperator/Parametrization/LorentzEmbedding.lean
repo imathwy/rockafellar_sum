@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzCoordinates
+
+/-!
+# Lorentz embedding
+
+This module bundles the positive and negative Lorentz coordinates into a
+linear embedding and characterizes its image.
+-/
 
 public section
 

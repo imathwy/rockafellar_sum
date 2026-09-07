@@ -1,8 +1,20 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Analysis.Normed.Module.Ball.Pointwise
 public import Mathlib.Analysis.Normed.Module.Convex
 public import Mathlib.Topology.ContinuousMap.ZeroAtInfty
+
+/-!
+# C0Seq localization sets
+
+This module defines the local open unit ball and the fixed radius-`1 / 2`
+constraint together with their basic geometry.
+-/
 
 @[expose] public section
 

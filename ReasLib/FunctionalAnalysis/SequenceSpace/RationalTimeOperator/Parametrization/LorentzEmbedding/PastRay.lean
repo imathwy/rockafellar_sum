@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzEmbedding
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzEnergy
+
+/-!
+# Lorentz past ray
+
+This module defines the past ray through a normalized left anchor and proves
+its coordinate, cone, and energy identities.
+-/
 
 public section
 
