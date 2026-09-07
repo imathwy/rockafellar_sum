@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Analysis.Normed.Group.InfiniteSum
 public import Mathlib.Topology.Algebra.InfiniteSum.Constructions
+
+/-!
+# Triangular decompositions of double sums
+
+This module records the diagonal, strict-upper, and strict-lower decomposition
+of a summable family indexed by `ℕ × ℕ`.
+-/
 
 universe u
 

@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Analysis.Normed.Module.Convex
+
+/-!
+# Lorentz cones
+
+This module defines the future and past Lorentz cones and their basic norm
+and convexity API.
+-/
 
 @[expose] public section
 

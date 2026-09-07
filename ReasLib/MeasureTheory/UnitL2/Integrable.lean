@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.MeasureTheory.UnitL2
 public import Mathlib.MeasureTheory.Function.LpSeminorm.LpNorm
+
+/-!
+# Integrability of `UnitL2` representatives
+
+This module records integrability and norm bounds for canonical unit-interval
+`L2` representatives.
+-/
 
 @[expose] public section
 

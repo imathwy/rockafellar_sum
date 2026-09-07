@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Coordinate
+
+/-!
+# Single-coordinate vectors in `C0Seq`
+
+This module defines the canonical finitely supported coordinate vectors and
+their evaluation and norm identities.
+-/
 
 public section
 

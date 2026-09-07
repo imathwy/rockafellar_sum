@@ -1,8 +1,20 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Data.Countable.Defs
 public import Mathlib.Data.Nat.Pairing
 public import Mathlib.Data.Set.Finite.Basic
+
+/-!
+# Repeating schedules
+
+This module defines countable schedules with strictly increasing occurrence
+indices and their canonical construction.
+-/
 
 public section
 

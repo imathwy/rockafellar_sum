@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Analysis.InnerProductSpace.ProdL2
+
+/-!
+# Two-coordinate Hilbert products
+
+This module defines the `WithLp 2` product of a Hilbert space with the real
+line and its coordinate API.
+-/
 
 @[expose] public section
 

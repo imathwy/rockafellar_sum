@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Analysis.Normed.Module.Dual
 public import Mathlib.Analysis.LocallyConvex.Separation
+
+/-!
+# Dense range and annihilators
+
+This module records the continuous-dual annihilator criterion for density of a
+continuous linear-map range.
+-/
 
 public section
 

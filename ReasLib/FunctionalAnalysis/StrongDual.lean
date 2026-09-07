@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Topology.Algebra.Module.Spaces.ContinuousLinearMap
 import Mathlib.Analysis.Normed.Operator.Banach
+
+/-!
+# Strong-dual transposes
+
+This module defines the continuous-linear equivalence induced on strong duals
+and its evaluation and surjectivity bridges.
+-/
 
 public section
 
