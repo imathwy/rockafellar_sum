@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Analysis.Normed.MulAction
 public import Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics
+
+/-!
+# Left dyadic templates
+
+This module defines the dyadic times, radii, and endpoint templates used by
+the past side of the ghost curve.
+-/
 
 public section
 

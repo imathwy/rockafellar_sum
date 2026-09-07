@@ -1,8 +1,20 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Data.Real.Sign
 public import ReasLib.Combinatorics.DetectorTriple
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Detector
+
+/-!
+# Favorable detector signs
+
+This module chooses an ordered detector pair and sign with positive reading for
+points outside a parametrized subspace.
+-/
 
 @[expose] public section
 

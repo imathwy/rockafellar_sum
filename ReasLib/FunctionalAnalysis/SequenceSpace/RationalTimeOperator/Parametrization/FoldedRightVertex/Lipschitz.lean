@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.FoldedRightVertex.Coordinates
+
+/-!
+# Folded right-vertex Lipschitz bounds
+
+This module bounds displacement of adjacent folded right vertices by their
+scheduled radii and time gaps.
+-/
 
 public section
 

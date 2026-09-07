@@ -1,9 +1,21 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.FoldedRightVertex.Coordinates
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzEmbedding
 public import ReasLib.Analysis.AffineInterpolation
 public import ReasLib.Analysis.Normed.LorentzCone
+
+/-!
+# Lorentz-cone bounds for folded vertices
+
+This module places folded right vertices and their affine edges in the future
+Lorentz cone.
+-/
 
 public section
 

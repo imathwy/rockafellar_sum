@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Algebra.GroupWithZero.Units.Fintype
 public import Mathlib.Data.Countable.Basic
+
+/-!
+# Detector triples
+
+This module defines the finite-sign detector-triple data and its coordinate
+and schedule API.
+-/
 
 public section
 
