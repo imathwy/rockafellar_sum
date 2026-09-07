@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Polar
+
+/-!
+# No polar point at ghost time
+
+This module excludes polar points with positive coordinate equal to the ghost time.
+-/
 
 public section
 

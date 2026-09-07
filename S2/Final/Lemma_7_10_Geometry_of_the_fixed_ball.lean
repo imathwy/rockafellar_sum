@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.C0Seq.Localization
+
+/-!
+# Geometry of the Fixed Ball
+
+This module exposes nonemptiness, closedness, convexity, and interior facts.
+-/
 
 public section
 

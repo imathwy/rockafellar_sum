@@ -1,7 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.DualPairing.Origin
 public import S2.Final.Definition_7_1_The_ghost_curve_operator_M_Operator
+
+/-!
+# The origin is not on the operator graph
+
+This module records the exclusion of the origin from the monotone ghost-curve graph.
+-/
 
 public section
 

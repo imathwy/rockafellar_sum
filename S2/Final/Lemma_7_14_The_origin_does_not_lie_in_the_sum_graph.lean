@@ -1,3 +1,8 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import S2.Final.Definition_7_1_The_ghost_curve_operator_M_Operator
@@ -5,6 +10,12 @@ import S2.Final.Lemma_7_7_The_origin_is_not_on_the_graph_of_M
 public import S2.Final.zero_mem_sumGraph_imp_zero_mem_M
 public import S2.Infra.monotone_iff_subset_polar_Monotone
 public import ReasLib.Analysis.C0Seq.NormalCone.Origin
+
+/-!
+# Origin Outside the Sum Graph
+
+This module records the non-membership certificate for the sum graph.
+-/
 
 public section
 

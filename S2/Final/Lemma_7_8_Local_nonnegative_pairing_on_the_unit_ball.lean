@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Operator.Localization
+
+/-!
+# Local nonnegative pairing
+
+This module records nonnegative quadratic pairing on the ghost graph over the local ball.
+-/
 
 public section
 

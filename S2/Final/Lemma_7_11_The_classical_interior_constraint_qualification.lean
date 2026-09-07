@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Operator.ConstraintQualification
+
+/-!
+# Classical Interior Constraint Qualification
+
+This module exposes the domain and interior witness for the fixed constraint.
+-/
 
 public section
 

@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Operator.NormalCone
 public import S2.Final.fixedBall_normalCone_polar_subset_Pairing
+
+/-!
+# Nonnegative pairing on the sum graph
+
+This module exposes nonnegativity of the quadratic pairing for points in the
+ghost-curve and normal-cone sum graph.
+-/
 
 public section
 

@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Operator
+
+/-!
+# The Ghost-Curve Operator
+
+This module records the source-facing definition and graph of `M`.
+-/
 
 /- Definition 7.1 (The ghost-curve operator $M$): its graph is the ambient
 preimage of the restricted ghost curve at the real parameters `P ≠ 1`. -/

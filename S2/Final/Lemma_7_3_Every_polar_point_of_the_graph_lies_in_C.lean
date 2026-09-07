@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Polar
+
+/-!
+# Polar points lie in the parametrized subspace
+
+This module records the subspace reduction for polar points of the ghost-curve graph.
+-/
 
 public section
 

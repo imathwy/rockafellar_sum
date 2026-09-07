@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Maximal
+
+/-!
+# Maximal monotonicity of the ghost-curve operator
+
+This module exposes the monotone-polar characterization and maximal monotonicity
+of the ghost-curve operator graph.
+-/
 
 public section
 

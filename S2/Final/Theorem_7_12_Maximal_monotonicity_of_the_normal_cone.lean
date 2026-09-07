@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.C0Seq.NormalCone.ClosedBall
+
+/-!
+# Maximal monotonicity of the fixed-ball normal cone
+
+This module exposes maximality, domain, and origin formulas for the normal cone
+of `C0Seq.finalConstraint`.
+-/
 
 public section
 
