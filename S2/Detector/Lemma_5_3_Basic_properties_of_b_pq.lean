@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import S2.Detector.Definition_5_2_Two_coordinate_determinant_vectors
+
+/-!
+# Basic Properties of Detector Vectors
+
+This module records pairing and norm bounds for the two-coordinate detectors.
+-/
 
 /- Lemma 5.3 (Basic properties of $b_{pq}$) (1): the selected vector pairs to zero
 with each of its two-coordinate determinant vectors. -/

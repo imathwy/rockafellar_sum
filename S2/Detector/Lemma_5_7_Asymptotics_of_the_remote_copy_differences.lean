@@ -1,9 +1,20 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.MeasureTheory.UnitL2.IntervalCoordinateOperator.RemoteDetectorDifference
 public import S2.Detector.Construction_5_6_Remote_copies_of_a_two_coordinate_detector_Sequence
 public import S2.Detector.Lemma_5_3_Basic_properties_of_b_pq
 public import S2.Detector.pairing_remoteSupport_tendsto_zero
+
+/-!
+# Remote-Copy Difference Asymptotics
+
+This module exposes norm and pairing limits for remote detector differences.
+-/
 
 public section
 

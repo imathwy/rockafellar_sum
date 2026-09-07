@@ -1,7 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization
 public import S2.PositiveOperator.Definition_3_9_A_missing_range_vector_and_its_coordinate_functional
+
+/-!
+# Membership Criterion for the Parametrized Subspace
+
+This module exposes the translated-coordinate span characterization.
+-/
 
 public section
 
