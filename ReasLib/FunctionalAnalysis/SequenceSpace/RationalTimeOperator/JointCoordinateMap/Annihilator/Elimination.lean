@@ -1,9 +1,21 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.JointCoordinateMap.Annihilator
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.PositiveDefinite
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.SymmetricPart
 public import ReasLib.MeasureTheory.UnitL2.IntervalCoordinateOperator.Adjoint.C0Range
+
+/-!
+# Joint-coordinate annihilator elimination
+
+This module derives the balance equation between the interval adjoint and the
+canonical `C0Seq` pairing.
+-/
 
 public section
 

@@ -1,8 +1,20 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator
 public import ReasLib.MeasureTheory.UnitL2.IntervalCoordinateOperator
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Pairing
+
+/-!
+# Joint coordinate maps
+
+This module bundles positive, interval, and parametrizing-pairing coordinates
+into one continuous linear map.
+-/
 
 public section
 

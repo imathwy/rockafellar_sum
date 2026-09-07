@@ -1,3 +1,8 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.Normed.Operator.Bilinear
@@ -5,6 +10,13 @@ public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Transpose
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Bilinear
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.QuadraticIdentity
 public import ReasLib.MeasureTheory.UnitL2.IntervalCoordinateOperator.Adjoint
+
+/-!
+# Symmetric part of the positive operator
+
+This module identifies the symmetric part of the rational-time positive
+operator with the interval-coordinate Gram operator.
+-/
 
 namespace L1Seq
 

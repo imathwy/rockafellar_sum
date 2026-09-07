@@ -1,9 +1,21 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.JointCoordinateMap
 public import ReasLib.FunctionalAnalysis.SequenceSpace.L1.Annihilator
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Transpose
 public import ReasLib.MeasureTheory.UnitL2.IntervalCoordinateOperator.Adjoint
+
+/-!
+# Joint-coordinate annihilators
+
+This module gives the finite-product annihilator equation for the joint
+coordinate map.
+-/
 
 public section
 

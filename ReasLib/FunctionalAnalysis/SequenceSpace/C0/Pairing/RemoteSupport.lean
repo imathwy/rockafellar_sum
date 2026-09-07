@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Pairing
+
+/-!
+# Remote-support pairing limits
+
+This module proves that uniformly bounded tails supported beyond their indices
+pair to zero with every `C0Seq` vector.
+-/
 
 public section
 

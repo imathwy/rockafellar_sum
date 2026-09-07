@@ -1,7 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Analysis.Normed.Lp.ProdLp
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Pairing
+
+/-!
+# Product pairing on `C0Seq × L1Seq`
+
+This module bundles the symmetric cross-pairing and its quadratic-form API.
+-/
 
 public section
 

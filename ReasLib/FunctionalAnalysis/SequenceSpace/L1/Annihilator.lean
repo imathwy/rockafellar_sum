@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.FiniteProductDual.Annihilator
 public import ReasLib.FunctionalAnalysis.SequenceSpace.L1.Transpose
+
+/-!
+# Product-range annihilators on `L1Seq`
+
+This module specializes the finite-product annihilator criterion to summable
+sequence maps.
+-/
 
 public section
 

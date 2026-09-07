@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.Normed.Module.Dual
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.JointCoordinateMap.Annihilator.Triviality
+
+/-!
+# Dense range of the joint coordinate map
+
+This module transfers annihilator triviality to dense range and simultaneous
+coordinate approximation.
+-/
 
 public section
 
