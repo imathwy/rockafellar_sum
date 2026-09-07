@@ -156,7 +156,6 @@ theorem lipschitzOnWith_ghostCurveN_Iic (d : C0Seq) (hd : d ≠ 0)
   let f : ℝ → HilbertProd2 UnitL2 :=
     ghostCurveN d hd h_missing zLeft z₀ h h_tendsto v
   have htwo_nonneg : (0 : ℝ) ≤ 2 := by norm_num
-  have htwo_nonneg : (0 : ℝ) ≤ 2 := by norm_num
   have hneg_half_nonpos : (-(1 / 2 : ℝ)) ≤ 0 := by norm_num
   have ht0 : 0 < leftTime 0 := by
     rw [leftTime_def]
@@ -177,7 +176,7 @@ theorem lipschitzOnWith_ghostCurveN_Iic (d : C0Seq) (hd : d ≠ 0)
       ‖(-P - -Q) • negativeCoordinate d hd zLeft‖ =
           |P - Q| * ‖negativeCoordinate d hd zLeft‖ := by
         rw [norm_smul, Real.norm_eq_abs, abs_sub_comm]
-        ring
+        ring_nf
       _ ≤ |P - Q| * 1 := mul_le_mul_of_nonneg_left hs (abs_nonneg _)
       _ = (1 : ℝ) * dist P Q := by
         rw [Real.dist_eq]

@@ -106,7 +106,7 @@ theorem lipschitzWith_leftTemplate {E : Type*} [SeminormedAddCommGroup E] [Norme
       rw [dist_eq_norm]
       simp only [Real.norm_eq_abs, coe_nnnorm]
       rw [abs_sub_comm]
-      ring
+      ring_nf
 
 /-- A vector of norm less than `1 / 32` determines a `1 / 32`-Lipschitz left template. -/
 theorem lipschitzWith_leftTemplate_one_div_32 {E : Type*} [SeminormedAddCommGroup E]

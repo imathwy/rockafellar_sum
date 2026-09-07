@@ -129,8 +129,7 @@ theorem positiveCoordinate_ne_one_of_mem_ghostCurveOperator_polar
     have hN_rv : negativeCoordinate d hd rv =
         ghostCurveN d hd h_missing zLeft z₀ h h_tendsto v
           (DetectorTriple.rightTime i) := by
-      simpa [rv] using
-        (ghostCurveN_rightTime d hd h_missing zLeft z₀ h h_tendsto v i).symm
+      exact (ghostCurveN_rightTime d hd h_missing zLeft z₀ h h_tendsto v i).symm
     have hPdiff : positiveCoordinate d hd (w - rv) =
         1 - DetectorTriple.rightTime i := by
       rw [map_sub, hP, hP_rv]
