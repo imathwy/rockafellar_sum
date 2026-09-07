@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Analysis.Normed.Operator.Banach
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.PositiveDefinite
+
+/-!
+# Positive-operator equivalence
+
+This module packages the hypothetical surjective positive operator as a
+continuous-linear equivalence and exposes its inverse API.
+-/
 
 namespace L1Seq
 

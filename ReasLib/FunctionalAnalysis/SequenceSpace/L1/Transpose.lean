@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Topology.Algebra.Module.Spaces.ContinuousLinearMap
 public import ReasLib.Analysis.Sequence.L1
+
+/-!
+# Paper transposes on `L1Seq`
+
+This module defines precomposition transposes of continuous maps out of the
+real summable-sequence space.
+-/
 
 public section
 

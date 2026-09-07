@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Topology.Algebra.Module.Spaces.ContinuousLinearMap
+
+/-!
+# Continuous duals of finite products
+
+This module constructs the coordinate equivalence for the continuous dual of
+`E × (F × 𝕜)`.
+-/
 
 public section
 

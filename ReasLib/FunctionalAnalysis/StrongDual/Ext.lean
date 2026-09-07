@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Analysis.Normed.Operator.NormedSpace
+
+/-!
+# Extensionality for strong-dual maps
+
+This module records the pointwise extensionality principle for continuous maps
+whose codomain is a strong dual.
+-/
 
 public section
 

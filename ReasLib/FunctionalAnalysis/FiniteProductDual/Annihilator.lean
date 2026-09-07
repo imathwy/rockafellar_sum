@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.FiniteProductDual
 public import Mathlib.Analysis.LocallyConvex.Polar
+
+/-!
+# Annihilators of finite-product ranges
+
+This module records the coordinate criterion for a continuous functional to
+annihilate a finite-product map range.
+-/
 
 public section
 

@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.L1.Transpose
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Dual
+
+/-!
+# Reindexed transposes on `C0Seq`
+
+This module defines the transpose of an `L1Seq`-to-`C0Seq` map under the
+canonical dual identification.
+-/
 
 public section
 
