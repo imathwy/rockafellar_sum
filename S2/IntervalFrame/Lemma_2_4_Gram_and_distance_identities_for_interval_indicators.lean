@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.MeasureTheory.UnitL2.IntervalIndicator
+
+/-!
+# Gram and distance identities
+
+This source-facing module records the canonical Gram, norm, and distance
+identities for interval-indicator vectors.
+-/
 
 @[expose] public section
 

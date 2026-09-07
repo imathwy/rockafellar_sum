@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzEnergy
+
+/-!
+# Lorentz polarization identity
+
+This source-facing module records the symmetric-form expression in Lorentz
+coordinates.
+-/
 
 @[expose] public section
 
