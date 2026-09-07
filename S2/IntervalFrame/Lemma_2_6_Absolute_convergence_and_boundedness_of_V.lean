@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import S2.IntervalFrame.Definition_2_5_The_interval_coordinate_operator_V_Operator
+
+/-!
+# Absolute convergence and boundedness of `V`
+
+This source-facing module records the convergence and operator-norm bounds for
+the interval-coordinate synthesis.
+-/
 
 /- Lemma 2.6 (Absolute convergence and boundedness of $V$) (1):
 the series defining `intervalCoordinateOperator a` and its absolute convergence. -/

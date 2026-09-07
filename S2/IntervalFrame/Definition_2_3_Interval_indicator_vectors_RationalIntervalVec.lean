@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.MeasureTheory.UnitL2.RationalIntervalIndicator
+
+/-!
+# Rational interval indicator vectors
+
+This source-facing module records the rational-time interval-indicator
+sequence and its representative formula.
+-/
 
 open MeasureTheory
 
