@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+
+/-!
+# Conull point selection on real intervals
+
+This module selects points on both sides of a center while avoiding a finite
+set and a null relative complement.
+-/
 
 namespace Real
 

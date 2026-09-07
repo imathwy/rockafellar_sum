@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Analysis.Normed.Group.Basic
+
+/-!
+# Approximation near a nonzero point
+
+This module records lower and upper norm bounds for points within half the
+norm of a nonzero reference point.
+-/
 
 public section
 

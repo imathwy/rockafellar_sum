@@ -1,8 +1,20 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.Sequence.L1Synthesis
 public import ReasLib.FunctionalAnalysis.SequenceSpace.L1.Transpose
 public import Mathlib.Analysis.InnerProductSpace.Dual
+
+/-!
+# Transpose of summable sequence synthesis
+
+This module computes the paper transpose of an `L1Seq` synthesis operator on
+coordinate singletons and Riesz functionals.
+-/
 
 open scoped InnerProductSpace
 

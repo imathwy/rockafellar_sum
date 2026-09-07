@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Pairing.RemoteSupport
 public import ReasLib.MeasureTheory.UnitL2.IntervalCoordinateOperator.RemoteCopySequence
+
+/-!
+# Remote-detector differences
+
+This module records norm, pairing, and convergence estimates for differences
+between determinant vectors and their remote copies.
+-/
 
 public section
 

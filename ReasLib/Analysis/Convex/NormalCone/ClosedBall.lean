@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.Convex.NormalCone
 import Mathlib.Analysis.Normed.Module.HahnBanach
+
+/-!
+# Maximal monotonicity of closed-ball normal cones
+
+This module proves maximal monotonicity of a positive-radius closed-ball
+normal cone under surjectivity of the dual-pairing map.
+-/
 
 public section
 

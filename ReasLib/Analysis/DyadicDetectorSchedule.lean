@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Analysis.SpecialFunctions.Pow.Real
 public import ReasLib.Combinatorics.DetectorSchedule
+
+/-!
+# Dyadic detector schedule
+
+This module defines the right-hand dyadic times and radii attached to a
+repeating signed detector schedule.
+-/
 
 public section
 

@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.TwoCoordinateDeterminant
 public import ReasLib.MeasureTheory.UnitL2.IntervalCoordinateOperator.Relocation
+
+/-!
+# Remote copies of determinant vectors
+
+This module constructs equal-norm remote copies whose interval-coordinate
+images converge to the original determinant vector.
+-/
 
 public section
 

@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.Normed.LorentzCone
 public import ReasLib.Analysis.InnerProductSpace.HilbertProd2
+
+/-!
+# Lorentz energy on a two-coordinate Hilbert product
+
+This module develops completed-square and polarization identities for the
+Lorentz energy on `HilbertProd2`.
+-/
 
 @[expose] public section
 

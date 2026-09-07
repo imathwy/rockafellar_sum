@@ -1,8 +1,20 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Analysis.Normed.Group.Basic
 public import Mathlib.Analysis.Normed.Group.Continuity
 public import Mathlib.Order.Filter.AtTopBot.Basic
+
+/-!
+# Quantitative norm-null sequence extraction
+
+This module provides late-index, diagonal, and limiting norm estimates for
+sequences converging to zero.
+-/
 
 public section
 
