@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.Convergence
+
+/-!
+# Closedness of the parametrized subspace
+
+This module proves that the range of a nonzero-direction parametrization is
+closed.
+-/
 
 public section
 

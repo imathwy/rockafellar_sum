@@ -1,8 +1,20 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization
 public import ReasLib.Topology.Maps.ClosedEmbedding
 public import Mathlib.Topology.Algebra.Module.FiniteDimension
+
+/-!
+# Convergence of parametrized points
+
+This module extracts parameter convergence and uniqueness from convergent
+parametrized sequences.
+-/
 
 public section
 

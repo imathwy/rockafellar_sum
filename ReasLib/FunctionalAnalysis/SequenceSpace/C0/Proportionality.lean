@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0
+
+/-!
+# Two-coordinate proportionality
+
+This module proves that vanishing ordered determinants force proportionality of
+nonzero `C0Seq` vectors.
+-/
 
 public section
 

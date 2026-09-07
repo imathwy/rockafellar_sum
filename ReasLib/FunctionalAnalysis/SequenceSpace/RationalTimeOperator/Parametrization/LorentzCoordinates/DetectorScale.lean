@@ -1,8 +1,20 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Order.Filter.AtTopBot.Archimedean
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzCoordinates.NearGhostBase
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.ProductPairing
+
+/-!
+# Detector scales
+
+This module defines the quadratic detector scale attached to near-ghost base
+points and its elementary bounds.
+-/
 
 public section
 
