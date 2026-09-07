@@ -1,0 +1,31 @@
+# Lean/Lake build products and generated compiler state.
+/.lake/
+*.olean
+*.olean.private
+*.olean.server
+*.ilean
+*.ir
+
+# M2F orchestration state and generated audit snapshots.
+/.m2f_history/
+/.m2f_library_integration/
+/.m2f_locks/
+/.m2f_memory/
+/.m2f_lake_state.json
+/.m2f_source_manifest.json
+**/M2FProofAxiomAudit_*.lean
+
+# Local agent/editor coordination and scratch probes.
+/AGENTS.md
+/.vscode/
+/Scratch*.lean
+/scripts/
+/source/
+/FORMALIZATION_ITINERARY.md
+/PROGRESS_AND_PARALLEL_PLAN.md
+*.orig
+*.tmp
+*.jsonl
+**/__pycache__/
+*.pyc
+.DS_Store
