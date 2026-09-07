@@ -1,7 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.Sequence.L1Synthesis
 public import ReasLib.MeasureTheory.UnitL2.RationalIntervalIndicator
+
+/-!
+# Interval-coordinate operator bounds
+
+This module records norm bounds for the rational interval-coordinate vectors.
+-/
 
 public section
 

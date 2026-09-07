@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.Sequence.L1
+
+/-!
+# Finite-support relocation
+
+This module defines remote copies of finitely supported summable sequences and
+their coordinate identities.
+-/
 
 @[expose] public section
 

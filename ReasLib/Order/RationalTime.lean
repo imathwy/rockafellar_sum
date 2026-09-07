@@ -1,3 +1,8 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Data.Rat.Cast.Order
@@ -5,6 +10,13 @@ public import Mathlib.Data.Rat.Denumerable
 public import Mathlib.Data.Real.Basic
 public import Mathlib.Algebra.Order.Archimedean.Real.Basic
 public import Mathlib.Order.Interval.Set.Infinite
+
+/-!
+# Rational-time enumeration
+
+This module fixes the countable enumeration of rational points in `(0, 1)` and
+its real-valued sequence.
+-/
 
 /-- The rational points strictly between `0` and `1`. -/
 public abbrev RationalTime : Type := Set.Ioo (0 : ℚ) 1

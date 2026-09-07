@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Topology.Bases
 public import Mathlib.Topology.MetricSpace.Basic
+
+/-!
+# Tail-dense sequence extraction
+
+This module records strictly increasing subsequence extraction from a
+tail-dense sequence in a metric space.
+-/
 
 public section
 

@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.MeasureTheory.UnitL2.IntervalCoordinateOperator
 import Mathlib.MeasureTheory.Function.LpSpace.InfiniteSum
+
+/-!
+# Pointwise interval-coordinate representatives
+
+This module defines the scalar pointwise representative of interval-coordinate
+synthesis and its evaluation API.
+-/
 
 noncomputable section
 

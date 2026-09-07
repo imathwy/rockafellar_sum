@@ -1,8 +1,20 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.Sequence.L1.Relocation
 public import ReasLib.Analysis.Sequence.L1.RemoteSupport
 public import ReasLib.MeasureTheory.UnitL2.IntervalCoordinateOperator
+
+/-!
+# Remote relocation of interval coordinates
+
+This module transfers finite-support relocation identities through the
+interval-coordinate operator.
+-/
 
 @[expose] public section
 

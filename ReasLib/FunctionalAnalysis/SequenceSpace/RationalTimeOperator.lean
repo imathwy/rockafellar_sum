@@ -1,8 +1,20 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.Sequence.L1
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0
 public import ReasLib.Order.RationalTime
+
+/-!
+# Rational-time positive operator
+
+This module defines the interval-coordinate positive operator on `L1Seq` and
+its coordinate, norm, and pairing identities.
+-/
 
 public section
 

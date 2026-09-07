@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.Sequence.L1
 public import Mathlib.Analysis.Normed.Lp.lpHolder
+
+/-!
+# Summable sequence synthesis
+
+This module develops norm and convergence estimates for synthesis from a
+summable sequence of vectors.
+-/
 
 public section
 

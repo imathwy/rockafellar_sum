@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.MeasureTheory.UnitL2.IntervalIndicator
 public import ReasLib.Order.RationalTime
+
+/-!
+# Rational interval indicators
+
+This module defines the interval-indicator sequence indexed by the fixed
+rational-time enumeration.
+-/
 
 @[expose] public section
 
