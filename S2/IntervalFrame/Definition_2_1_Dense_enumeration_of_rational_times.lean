@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 import ReasLib.Order.RationalTime
+
+/-!
+# Dense enumeration of rational times
+
+This source-facing module records the enumeration, injectivity, interval
+membership, and tail-density properties of `rationalTime`.
+-/
 
 /- Definition 2.1 (Dense enumeration of rational times) (1): the fixed equivalence. -/
 #check (rationalTimeEquiv : ℕ ≃ RationalTime)

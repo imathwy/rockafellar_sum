@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Topology.Maps.ClosedEmbedding
 public import Mathlib.Topology.Algebra.Module.FiniteDimension
+
+/-!
+# Closed one-dimensional ranges
+
+This source-facing module records closedness and scalar recovery for the range
+of multiplication by a nonzero vector.
+-/
 
 public section
 

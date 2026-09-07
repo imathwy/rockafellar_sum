@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.Normed.Module.Dual
+
+/-!
+# Dense range from a trivial annihilator
+
+This source-facing module records the canonical continuous-dual criterion for
+density of an operator range.
+-/
 
 public section
 
