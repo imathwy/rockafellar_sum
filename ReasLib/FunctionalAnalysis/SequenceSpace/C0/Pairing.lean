@@ -1,9 +1,21 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Analysis.Normed.Operator.Bilinear
 import Mathlib.Analysis.Normed.Operator.BoundedLinearMaps
 public import ReasLib.Analysis.Sequence.L1
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Single
+
+/-!
+# The `C0Seq`--`L1Seq` pairing
+
+This module develops the bounded coordinatewise pairing and its continuous-dual
+API.
+-/
 
 public section
 

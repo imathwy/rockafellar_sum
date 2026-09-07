@@ -1,8 +1,20 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.Convex.NormalCone.Sum
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Operator.Localization
 import ReasLib.Analysis.C0Seq.NormalCone.Origin
+
+/-!
+# Ghost-curve sum with a normal cone
+
+This module transfers local pairing bounds to the sum with the fixed
+normal-cone operator and derives the polar witness.
+-/
 
 public section
 

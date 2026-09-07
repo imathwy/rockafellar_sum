@@ -1,3 +1,8 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.ChainInterpolation
@@ -10,6 +15,13 @@ public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Para
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzEmbedding.PastRay
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzEmbedding.FutureRay
 public import ReasLib.Topology.MetricSpace.Lipschitz
+
+/-!
+# Lipschitz bounds for the ghost curve
+
+This module proves the one-sided and global `1`-Lipschitz estimates for the
+assembled negative-coordinate curve.
+-/
 
 public section
 

@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Dual
 public import ReasLib.FunctionalAnalysis.DualPairing.Monotone
+
+/-!
+# Coordinate dual pairing
+
+This module specializes the generic dual-pairing and monotone-polar API to
+`C0Seq` and `L1Seq`.
+-/
 
 public section
 
