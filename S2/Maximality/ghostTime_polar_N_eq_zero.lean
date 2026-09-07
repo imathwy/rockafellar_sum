@@ -1,8 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.Normed.Group.Sequences
 public import S2.Infra.HilbertProd2
 public import S2.Infra.UnitL2_Space
+
+/-!
+# Ghost-Time Polar Limit
+
+This module exposes the limiting polar inequality at the missing ghost time.
+-/
 
 public section
 
