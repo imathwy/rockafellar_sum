@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzCoordinates.Kernel
+
+/-!
+# Zero negative coordinate forces zero positive coordinate
+
+This module records the Lorentz-coordinate implication from zero N-coordinate to zero P-coordinate.
+-/
 
 public section
 

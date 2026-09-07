@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzCoordinates.FixedPositive
+
+/-!
+# Fixing the positive Lorentz coordinate
+
+This module exposes the adjusted scalar parameter and its positive and negative
+coordinate formulas.
+-/
 
 public section
 

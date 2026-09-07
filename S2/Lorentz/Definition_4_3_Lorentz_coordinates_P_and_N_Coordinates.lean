@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzCoordinates
+
+/-!
+# Lorentz Coordinate API
+
+This module exposes coordinate maps and their parametrized-point formulas.
+-/
 
 #check (Lorentz.parametrizedPoint :
   (d : C0Seq) → L1Seq → ℝ → Lorentz.parametrizedSubspace d)

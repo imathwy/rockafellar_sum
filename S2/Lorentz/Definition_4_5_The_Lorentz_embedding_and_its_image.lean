@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzEmbedding
+
+/-!
+# The Lorentz Embedding
+
+This module exposes the embedding, its coordinate formula, and its image.
+-/
 
 #check (Lorentz.embedding : ∀ (d : C0Seq), d ≠ 0 →
   Lorentz.parametrizedSubspace d →ₗ[ℝ] ℝ × HilbertProd2 UnitL2)

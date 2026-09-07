@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.ClosedRange
+
+/-!
+# Closedness of the parametrized subspace
+
+This module records closedness of the range of the Lorentz parametrization away
+from the zero direction.
+-/
 
 public section
 

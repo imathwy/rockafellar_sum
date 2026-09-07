@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.JointCoordinateMap.DenseRange
+
+/-!
+# Approximation of a prescribed coordinate triple
+
+This module exposes simultaneous approximation of positive, interval, and
+pairing coordinates by one `L1Seq` parameter.
+-/
 
 public section
 

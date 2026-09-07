@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.JointCoordinateMap.Annihilator
 public import S2.Lorentz.Definition_4_7_The_joint_coordinate_map_Theta
+
+/-!
+# Typed annihilator equation for the joint-coordinate map
+
+This module exposes the canonical three-coordinate annihilator characterization
+for the fixed joint-coordinate map.
+-/
 
 /- Lemma 4.8a (Typed product-functional annihilator equation): under the canonical
 dual identifications, `(b, y, lam)` annihilates the range of the fixed joint coordinate

@@ -1,9 +1,20 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import S2.Lorentz.Psi_injective
 public import S2.Lorentz.Psi_limit_parameter
 public import S2.Lorentz.isClosed_C
 public import S2.PositiveOperator.Definition_3_9_A_missing_range_vector_and_its_coordinate_functional
+
+/-!
+# Parametrization uniqueness and closedness
+
+This module records injectivity and convergence facts for the fixed parametrized subspace.
+-/
 
 open scoped Topology
 

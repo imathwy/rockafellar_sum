@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzEnergy
+
+/-!
+# Lorentz quadratic identities
+
+This module relates the quadratic pairing to parametrized coordinates and intrinsic energy.
+-/
 
 /- Lemma 4.4 (Lorentz quadratic identity) (1): the quadratic pairing of a
 parametrized point is the representative-level operator expression. -/
