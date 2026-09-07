@@ -1,8 +1,20 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.MeasureTheory.Function.L2Space
 public import Mathlib.MeasureTheory.Function.LpSpace.Complete
 public import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+
+/-!
+# Real `L2` on the unit interval
+
+This module fixes the unit-interval `L2` model and its canonical representative
+and inner-product API.
+-/
 
 @[expose] public section
 

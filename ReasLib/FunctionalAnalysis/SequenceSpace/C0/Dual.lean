@@ -1,8 +1,20 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Analysis.Normed.Operator.LinearIsometry
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Single
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Pairing
+
+/-!
+# The continuous dual of `C0Seq`
+
+This module constructs the canonical `L1Seq` representation of continuous
+linear functionals on `C0Seq`.
+-/
 
 public section
 

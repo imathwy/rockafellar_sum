@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Algebra.Group.Pointwise.Set.Basic
 public import Mathlib.Data.Rel
+
+/-!
+# Set-valued operators
+
+This module defines the graph, domain, and pointwise operations for
+set-valued operators.
+-/
 
 public section
 

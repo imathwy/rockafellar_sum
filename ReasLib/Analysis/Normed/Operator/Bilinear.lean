@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Analysis.Normed.Operator.Bilinear
+
+/-!
+# Bilinear-form polarization
+
+This module records the diagonal criterion for equality of continuous real
+bilinear symmetric parts.
+-/
 
 universe u
 

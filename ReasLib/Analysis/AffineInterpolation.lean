@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Analysis.Convex.Basic
 public import Mathlib.Analysis.Normed.Affine.AddTorsor
+
+/-!
+# Affine interpolation
+
+This module provides interval Lipschitz and convexity lemmas for affine line
+segments.
+-/
 
 public section
 

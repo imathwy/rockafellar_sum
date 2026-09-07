@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Analysis.Normed.Lp.lpSpace
+
+/-!
+# The real `L1Seq` model
+
+This module provides the real `ℓ¹` sequence model, finite truncations, and
+their norm and density API.
+-/
 
 @[expose] public section
 

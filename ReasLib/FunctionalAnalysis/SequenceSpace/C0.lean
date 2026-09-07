@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Topology.ContinuousMap.ZeroAtInfty
 public import Mathlib.Topology.Instances.Nat
+
+/-!
+# The real `C0Seq` model
+
+This module provides the real `c₀` sequence model and its convergence and
+coordinatewise API.
+-/
 
 public section
 
