@@ -1,7 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.MeasureTheory.UnitL2.Primitive.Holder
 public import ReasLib.MeasureTheory.UnitL2.Primitive.AbsolutelyContinuous
+
+/-!
+# Primitive Regularity
+
+This module exposes integral, Holder, continuity, and absolute-continuity facts for primitives.
+-/
 
 @[expose] public section
 

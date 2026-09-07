@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.Sequence.L1.RemoteSupport
+
+/-!
+# Remote support matching
+
+This module assigns distinct remote indices to the nonzero coordinates of a finite support.
+-/
 
 /- Lemma 2.12a (Remote matching of the support times).
 For finitely supported `b : L1Seq`, its nonzero coordinates can be assigned distinct

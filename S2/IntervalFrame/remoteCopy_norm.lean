@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.Sequence.L1.Relocation
+
+/-!
+# Support and norm of remote copies
+
+This module exposes support relocation and norm preservation for injective
+remote copies of finitely supported `L1Seq` vectors.
+-/
 
 /- Lemma 2.12b (Norm-preserving copied coefficient vector) (1):
 the copied vector is supported strictly above the prescribed cutoff. -/

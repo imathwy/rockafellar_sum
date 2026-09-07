@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.MeasureTheory.UnitL2.IntervalCoordinateOperator.Relocation
+
+/-!
+# Synthesis error of remote copies
+
+This module exposes displacement bounds and remote-copy approximation for the
+interval-coordinate synthesis operator.
+-/
 
 @[expose] public section
 

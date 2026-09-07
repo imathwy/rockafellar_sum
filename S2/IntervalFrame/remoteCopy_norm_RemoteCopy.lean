@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.Sequence.L1.Relocation
+
+/-!
+# Remote copies of finitely supported sequences
+
+This module exposes the remote-copy construction together with its coordinate,
+support, and norm formulas.
+-/
 
 #check (L1Seq.remoteCopy :
   (b : L1Seq) → (fun i ↦ b i).HasFiniteSupport → (ℕ → ℕ) → L1Seq)
