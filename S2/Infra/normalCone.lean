@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 import ReasLib.Analysis.Convex.NormalCone
+
+/-!
+# Normal-cone infrastructure
+
+This source-facing module records the canonical normal-cone operator and
+graph membership API.
+-/
 
 universe u v
 
