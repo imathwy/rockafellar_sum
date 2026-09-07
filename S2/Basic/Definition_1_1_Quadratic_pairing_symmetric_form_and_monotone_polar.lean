@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.DualPairing
+
+/-!
+# Quadratic pairing, symmetric form, and monotone polar
+
+This source-facing module records the canonical coordinate-pairing identities
+used by the basic monotonicity setup.
+-/
 
 /- Definition 1.1 (Quadratic pairing, symmetric form, and monotone polar) (1) -/
 #check (C0Seq.quadraticPairing_apply :

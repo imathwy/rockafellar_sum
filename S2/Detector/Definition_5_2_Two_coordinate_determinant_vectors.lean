@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.TwoCoordinateDeterminant
 public import S2.PositiveOperator.Definition_3_9_A_missing_range_vector_and_its_coordinate_functional
+
+/-!
+# Two-coordinate determinant vectors
+
+This source-facing module records the canonical determinant-vector definition
+and its coordinate formula.
+-/
 
 /- Definition 5.2 (Two-coordinate determinant vectors): for the vector `d : C0Seq`
 selected in Definition 3.9 and source coordinates `p < q`, `L1Seq.twoDet d p q` is

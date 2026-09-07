@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.MeasureTheory.UnitL2.IntervalCoordinateOperator.RemoteCopySequence
 public import S2.PositiveOperator.Definition_3_9_A_missing_range_vector_and_its_coordinate_functional
+
+/-!
+# Remote copies of a two-coordinate detector
+
+This source-facing module records the canonical remote-copy existence
+statement for the distinguished determinant vector.
+-/
 
 /- Construction 5.6 (Remote copies of a two-coordinate detector): for fixed
 coordinates `p < q`, choose equal-norm copies of the distinguished determinant
