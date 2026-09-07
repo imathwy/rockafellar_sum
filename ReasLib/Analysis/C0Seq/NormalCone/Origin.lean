@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.C0Seq.NormalCone
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.DualPairing.Origin
+
+/-!
+# Normal-cone origin obstruction
+
+This module transfers the origin-exclusion lemma to the fixed `C0Seq`
+normal-cone sum.
+-/
 
 public section
 

@@ -1,7 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Topology.MetricSpace.Holder
 public import ReasLib.MeasureTheory.UnitL2.Primitive
+
+/-!
+# Holder bounds for interval primitives
+
+This module proves the square-root increment estimate for `UnitL2.primitive`.
+-/
 
 @[expose] public section
 

@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.MeasureTheory.UnitL2.IntervalCoordinateOperator.Pointwise
+
+/-!
+# Interval-coordinate jump remainders
+
+This module defines the filtered series used to isolate finite-support jumps of
+the interval-coordinate representative.
+-/
 
 noncomputable section
 

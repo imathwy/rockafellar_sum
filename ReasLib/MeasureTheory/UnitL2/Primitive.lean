@@ -1,7 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.MeasureTheory.Integral.IntervalIntegral.LebesgueDifferentiationThm
 public import ReasLib.MeasureTheory.UnitL2.Integrable
+
+/-!
+# Interval primitives
+
+This module defines the indefinite interval integral of a `UnitL2` vector.
+-/
 
 @[expose] public section
 

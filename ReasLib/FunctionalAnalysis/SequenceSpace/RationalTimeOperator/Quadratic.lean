@@ -1,8 +1,20 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.InfiniteSum.NatTriangle
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator
 import Mathlib.Analysis.Normed.Ring.InfiniteSum
+
+/-!
+# Positive-operator quadratic series
+
+This module develops the summability and triangular-series identities for the
+rational-time positive operator.
+-/
 
 public section
 

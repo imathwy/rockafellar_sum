@@ -1,7 +1,19 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.MeasureTheory.UnitL2.IntervalCoordinateOperator.Jump
 public import ReasLib.MeasureTheory.Measure.Lebesgue.Conull
+
+/-!
+# Injectivity of interval-coordinate synthesis
+
+This module proves that the interval-coordinate operator has trivial kernel by
+isolating jumps of a pointwise representative.
+-/
 
 public section
 

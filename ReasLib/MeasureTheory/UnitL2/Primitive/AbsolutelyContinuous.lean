@@ -1,8 +1,20 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.MeasureTheory.Function.AbsolutelyContinuous
 public import Mathlib.MeasureTheory.Integral.IntervalIntegral.LebesgueDifferentiationThm
 public import ReasLib.MeasureTheory.UnitL2.Primitive
+
+/-!
+# Absolute continuity of interval primitives
+
+This module proves absolute continuity and almost-everywhere derivative facts
+for `UnitL2.primitive`.
+-/
 
 @[expose] public section
 
