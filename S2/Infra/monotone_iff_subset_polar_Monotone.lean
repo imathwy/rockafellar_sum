@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.DualPairing.Monotone
+
+/-!
+# Monotonicity under subsets
+
+This module exposes the monotonicity predicate for a dual pairing and its
+restriction to subsets.
+-/
 
 public section
 

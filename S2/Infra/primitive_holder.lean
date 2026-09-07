@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.MeasureTheory.UnitL2.Primitive.Holder
+
+/-!
+# Holder estimates for `UnitL2` primitives
+
+This module exposes square-root Holder continuity and ordinary continuity of
+primitive functions on the unit interval.
+-/
 
 @[expose] public section
 

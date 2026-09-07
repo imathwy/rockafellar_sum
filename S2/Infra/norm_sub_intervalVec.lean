@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.MeasureTheory.UnitL2.IntervalIndicator
+
+/-!
+# Distances between interval indicators
+
+This module exposes the squared-distance and distance formulas for unit-interval
+indicator vectors.
+-/
 
 public section
 

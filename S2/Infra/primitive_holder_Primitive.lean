@@ -1,6 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.MeasureTheory.UnitL2.Primitive
+
+/-!
+# Primitive functions for `UnitL2`
+
+This compatibility module exposes the primitive function and its interval-integral
+evaluation formula.
+-/
 
 @[expose] public section
 

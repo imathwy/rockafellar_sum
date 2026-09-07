@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Dual
+
+/-!
+# Dual coefficients of c0
+
+This module records the l1 coefficient representation of continuous functionals on C0Seq.
+-/
 
 public section
 

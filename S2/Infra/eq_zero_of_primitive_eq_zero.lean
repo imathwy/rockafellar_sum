@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.MeasureTheory.UnitL2.Primitive
+
+/-!
+# Vanishing primitives in UnitL2
+
+This module records that a UnitL2 function with zero initial integrals is zero.
+-/
 
 @[expose] public section
 

@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Pairing
+
+/-!
+# The bundled c0-l1 pairing
+
+This module exposes the coordinatewise pairing and its continuous-linear-map API.
+-/
 
 public section
 

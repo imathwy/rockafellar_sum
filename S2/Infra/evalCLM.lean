@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Coordinate
+
+/-!
+# Coordinate Evaluation
+
+This module records continuous coordinate evaluations and sup-norm bounds on `C0Seq`.
+-/
 
 public section
 
