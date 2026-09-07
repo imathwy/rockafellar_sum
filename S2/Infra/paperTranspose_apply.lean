@@ -1,7 +1,18 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import S2.Infra.paperTranspose
 public import ReasLib.FunctionalAnalysis.StrongDual.Ext
+
+/-!
+# Paper-transpose evaluation rules
+
+This module collects evaluation, algebra, and composition rules for continuous-map transposes.
+-/
 
 public section
 

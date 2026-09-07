@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Dual
+
+/-!
+# The Dual of `C0Seq`
+
+This module exposes the isometric linear identification of `C0Seq` duals with `L1Seq`.
+-/
 
 /- Infrastructure A.11 (Isometric identification c₀* ≃ ℓ¹) -/
 #check (C0Seq.dualEquivL1 : StrongDual ℝ C0Seq ≃ₗᵢ[ℝ] L1Seq)

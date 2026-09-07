@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import Mathlib.Analysis.Normed.Module.HahnBanach
+
+/-!
+# Norming functionals
+
+This module exposes the norm-attaining dual functional supplied by Hahn-Banach.
+-/
 
 universe u
 

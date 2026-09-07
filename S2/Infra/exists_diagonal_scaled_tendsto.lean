@@ -1,6 +1,17 @@
+/-
+Copyright (c) 2026 Zichen Wang. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Zichen Wang
+-/
 module
 
 public import ReasLib.Analysis.Normed.Group.Sequences
+
+/-!
+# Diagonal Scaled Convergence
+
+This module exposes diagonal selection lemmas for norm-null sequences and scales.
+-/
 
 public section
 
