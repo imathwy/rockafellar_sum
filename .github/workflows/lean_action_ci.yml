@@ -29,8 +29,8 @@ jobs:
         run: |
           set -euo pipefail
           set +e
-          rg -n --glob '*.lean' \
-            '(\bsorry\b|\badmit\b|\bsorryAx\b|^[[:space:]]*(private[[:space:]]+)?(axiom|opaque|unsafe)\b|\b(native_decide|ofReduceBool|implemented_by)\b)' \
+          grep -RInE --include='*.lean' \
+            '(^|[^[:alnum:]_])(sorry|admit|sorryAx)([^[:alnum:]_]|$)|^[[:space:]]*(private[[:space:]]+)?(axiom|opaque|unsafe)([[:space:]]|$)|(^|[^[:alnum:]_])(native_decide|ofReduceBool|implemented_by)([^[:alnum:]_]|$)' \
             ReasLib S2 ReasLib.lean S2.lean rockafellar_sum.lean
           scan_status=$?
           set -e
