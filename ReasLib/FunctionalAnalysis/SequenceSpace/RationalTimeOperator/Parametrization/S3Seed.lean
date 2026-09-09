@@ -10,6 +10,7 @@ public import ReasLib.FunctionalAnalysis.DualPairing.MaximalExtension
 public import ReasLib.Analysis.Normed.LorentzCone.SeedMonotone
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzSeed
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.ScaledDetector
+public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.SeedBase
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.UnitDifferenceDetector
 
 /-!

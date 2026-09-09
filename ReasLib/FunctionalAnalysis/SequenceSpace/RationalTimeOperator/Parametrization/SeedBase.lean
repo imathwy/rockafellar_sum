@@ -17,7 +17,7 @@ namespace Lorentz
 
 /-- The carrier point obtained from a source sequence `a` with prescribed
 positive Lorentz coordinate `s`. -/
-def seedBase {d : C0Seq} (a : L1Seq) (s : ℝ) : parametrizedSubspace d :=
+noncomputable def seedBase {d : C0Seq} (a : L1Seq) (s : ℝ) : parametrizedSubspace d :=
   parametrizedPoint d a (2 * s - C0Seq.pairingL d a)
 
 /-- The seed base has exactly the prescribed positive coordinate. -/
