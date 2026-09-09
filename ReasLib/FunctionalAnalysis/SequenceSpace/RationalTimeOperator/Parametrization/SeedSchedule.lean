@@ -485,4 +485,19 @@ theorem polar_subset_axisCarrier_of_seedPoint_mem (S : Set (C0Seq × L1Seq))
   rintro z ⟨n, rfl⟩
   exact hw _ (hS n)
 
+/-- Each detector radius fits strictly below its distance from time one. -/
+theorem seedRadius_lt_time_sub_one (n : ℕ) : seedRadius n < seedTime n - 1 := by
+  have hp : 0 < (1 / 2 : ℝ) ^ n := by positivity
+  unfold seedRadius seedTime
+  rw [pow_add, pow_add]
+  norm_num
+
+/-- The radii are uniformly bounded by the first radius. -/
+theorem seedRadius_le_one_div_128 (n : ℕ) : seedRadius n ≤ 1 / 128 := by
+  have hp : (1 / 2 : ℝ) ^ n ≤ 1 := pow_le_one₀ (by norm_num) (by norm_num)
+  unfold seedRadius
+  rw [pow_add]
+  norm_num
+  linarith
+
 end Lorentz

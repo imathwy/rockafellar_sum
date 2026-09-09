@@ -13,6 +13,7 @@ public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Para
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.SeedBase
 public import ReasLib.Analysis.Normed.LorentzCone.ScaledDivergence
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.SeedSchedule
+public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.SeedComparisons
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.UnitDifferenceDetector
 
 /-!
