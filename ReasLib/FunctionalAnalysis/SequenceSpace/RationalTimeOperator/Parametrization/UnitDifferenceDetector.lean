@@ -126,6 +126,31 @@ theorem tendsto_pairingL_unitDifference_strictMono
     tendsto_const_nhds
   simpa only [pairingL_unitDifference, sub_zero] using (hc.sub hz)
 
+/-- The interval-coordinate inner product with a fixed dual sequence vanishes
+along a rational-time detector subsequence. -/
+theorem tendsto_inner_unitDifference_strictMono
+    (u : L1Seq) (i : ℕ) {φ : ℕ → ℕ}
+    (hφ : Filter.Tendsto (rationalTime ∘ φ) Filter.atTop
+      (𝓝 (rationalTime i))) :
+    Filter.Tendsto
+      (fun n ↦ ⟪L1Seq.intervalCoordinateOperator u,
+        L1Seq.intervalCoordinateOperator (unitDifference i (φ n))⟫_ℝ)
+      Filter.atTop (𝓝 0) := by
+  have hn := tendsto_norm_intervalCoordinate_unitDifference i hφ
+  have hv : Filter.Tendsto
+      (fun n ↦ L1Seq.intervalCoordinateOperator (unitDifference i (φ n)))
+      Filter.atTop (𝓝 (0 : UnitL2)) :=
+    tendsto_zero_iff_norm_tendsto_zero.mpr hn
+  have hu : Filter.Tendsto (fun _ : ℕ ↦ L1Seq.intervalCoordinateOperator u)
+      Filter.atTop (𝓝 (L1Seq.intervalCoordinateOperator u)) := tendsto_const_nhds
+  have hi : Filter.Tendsto
+      (fun n ↦ ⟪L1Seq.intervalCoordinateOperator u,
+        L1Seq.intervalCoordinateOperator (unitDifference i (φ n))⟫_ℝ)
+      Filter.atTop
+      (𝓝 ⟪L1Seq.intervalCoordinateOperator u, (0 : UnitL2)⟫_ℝ) :=
+    hu.inner hv
+  simpa using hi
+
 /-- Under the annihilation condition, the detector norm is exactly the
 interval-coordinate difference norm. -/
 theorem norm_negativeCoordinate_unitDifferenceDetector
