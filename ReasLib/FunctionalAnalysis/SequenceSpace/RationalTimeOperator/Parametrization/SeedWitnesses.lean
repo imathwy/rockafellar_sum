@@ -6,6 +6,7 @@ Authors: Zichen Wang
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.SeedAssembly
+public import ReasLib.FunctionalAnalysis.DualPairing.MaximalExtension
 
 /-!
 # Concrete source witnesses for the S3 seed
@@ -97,5 +98,49 @@ theorem exists_seed_negative_witness : ∃ z : parametrizedSubspace axisDirectio
       zero_sub]
     have hprod : 0 < L * ‖negativeCoordinate axisDirection seed_axis_ne_zero h‖ := mul_pos hL hNpos
     nlinarith [sq_pos_of_pos hprod]
+
+/-- The concrete S3 construction supplies a monotone seed with a negative
+energy witness, a radius-twelve interior anchor, carrier-contained polar,
+and nonnegative polar energy throughout the primal radius-sixteen ball. -/
+theorem exists_S3_seed : ∃ S : Set (C0Seq × L1Seq),
+    C0Seq.coordinateDualPairing.IsMonotone S ∧
+    (∃ z ∈ S, C0Seq.quadraticPairing z < 0) ∧
+    (∃ y ∈ S, ‖y.1‖ < 12) ∧
+    C0Seq.monotonePolar S ⊆ parametrizedSubspace axisDirection ∧
+    (∀ w ∈ C0Seq.monotonePolar S, ‖w.1‖ < 16 → 0 ≤ C0Seq.quadraticPairing w) := by
+  obtain ⟨z, hzP, hzN, hzX, hzneg⟩ := exists_seed_negative_witness
+  obtain ⟨v, hvP, hvN, hvX⟩ := exists_seed_direction
+  refine ⟨assembledSeed z v, assembledSeed_isMonotone z v hzP hvP hzN.le hvN.le,
+    ?_, ?_, assembledSeed_polar_subset_carrier z v, ?_⟩
+  · exact ⟨z, seed_base_mem z v, hzneg⟩
+  · exact ⟨((2 : ℝ) • v : parametrizedSubspace axisDirection),
+      seed_anchor_mem z v, seed_anchor_primal_lt_twelve v hvX⟩
+  · intro w hw hnorm
+    exact assembledSeed_polar_local_nonneg z v hzP hvP hzN.le hvN.le hzX hvX w hw hnorm
+
+/-- A maximal extension of the concrete S3 seed retains its negative witness,
+interior anchor and local nonnegative energy condition. -/
+theorem exists_S3_maximal_graph : ∃ G : Set (C0Seq × L1Seq),
+    Maximal C0Seq.coordinateDualPairing.IsMonotone G ∧
+    (∃ z ∈ G, C0Seq.quadraticPairing z < 0) ∧
+    (∃ y ∈ G, ‖y.1‖ < 12) ∧
+    (∀ w ∈ G, ‖w.1‖ < 16 → 0 ≤ C0Seq.quadraticPairing w) := by
+  obtain ⟨S, hS, hz, hy, _, hlocal⟩ := exists_S3_seed
+  obtain ⟨G, hSG, hG⟩ := C0Seq.coordinateDualPairing.exists_maximal_monotone_superset hS
+  have hpolar : G ⊆ C0Seq.monotonePolar S := by
+    intro w hw
+    have hwp := (C0Seq.coordinateDualPairing.isMonotone_iff_subset_polar G).mp hG.1 hw
+    rw [C0Seq.coordinateDualPairing.mem_monotonePolar] at hwp
+    rw [C0Seq.mem_monotonePolar]
+    intro z hz
+    rw [C0Seq.quadraticPairing_eq_coordinateQuadratic]
+    exact hwp z (hSG hz)
+  refine ⟨G, hG, ?_, ?_, ?_⟩
+  · obtain ⟨z, hzS, hneg⟩ := hz
+    exact ⟨z, hSG hzS, hneg⟩
+  · obtain ⟨y, hyS, hnorm⟩ := hy
+    exact ⟨y, hSG hyS, hnorm⟩
+  · intro w hw hnorm
+    exact hlocal w (hpolar hw) hnorm
 
 end Lorentz

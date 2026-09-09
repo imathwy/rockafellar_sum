@@ -27,6 +27,13 @@ def assembledSeed (z v : parametrizedSubspace axisDirection) : Set (C0Seq × L1S
     (∃ n : ℕ, w = (seedPoint n : C0Seq × L1Seq)) ∨
     w = ((2 : ℝ) • v : parametrizedSubspace axisDirection)}
 
+/-- The time-zero witness belongs to the assembled source seed. -/
+theorem seed_base_mem (z v : parametrizedSubspace axisDirection) :
+    (z : C0Seq × L1Seq) ∈ assembledSeed z v := by
+  refine Or.inl ⟨0, ?_, ?_⟩
+  · norm_num
+  · simp
+
 /-- The twice-direction anchor belongs to every assembled source seed. -/
 theorem seed_anchor_mem (z v : parametrizedSubspace axisDirection) :
     (((2 : ℝ) • v : parametrizedSubspace axisDirection) : C0Seq × L1Seq) ∈
