@@ -9,6 +9,7 @@ public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Para
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.UnitDifferenceDetector
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Single
 public import ReasLib.Analysis.Normed.LorentzCone.SeedTemplate
+public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Norm
 
 /-!
 # Fixed-positive seed bases
@@ -92,5 +93,74 @@ theorem norm_negativeCoordinate_axisSeedBase
   rw [norm_intervalCoordinate_unitDifference]
   simp only [Real.norm_eq_abs]
 
+
+/-- The axis seed base agrees with the explicit source parametrization. -/
+theorem axisSeedBase_unitDifference_eq (r : ℕ) (hr : r ≠ 1) (s : ℝ) :
+    axisSeedBase (s • unitDifference 1 r) s =
+      parametrizedPoint axisDirection (s • unitDifference 1 r) s := by
+  unfold axisSeedBase seedBase
+  rw [map_smul, pairingL_axisDirection_unitDifference hr]
+  congr 1
+  simp only [smul_eq_mul, mul_one]
+  ring
+
+/-- The primal component of an axis seed base is bounded independently of the
+remote coordinate. -/
+theorem norm_axisSeedBase_fst_le (r : ℕ) (hr : r ≠ 1) (s : ℝ) :
+    ‖(axisSeedBase (s • unitDifference 1 r) s : C0Seq × L1Seq).1‖ ≤ 5 * |s| := by
+  rw [axisSeedBase_unitDifference_eq r hr s, parametrizedPoint_apply,
+    parametrization_apply]
+  have ha : ‖s • unitDifference 1 r‖ ≤ |s| * 2 := by
+    rw [norm_smul, Real.norm_eq_abs]
+    exact mul_le_mul_of_nonneg_left (norm_unitDifference_le_two 1 r) (abs_nonneg s)
+  have hA := L1Seq.norm_positiveOperator_apply_le_two (s • unitDifference 1 r)
+  have ht := norm_add_le (-L1Seq.positiveOperator (s • unitDifference 1 r))
+    (s • axisDirection)
+  simp only [norm_neg, norm_smul, Real.norm_eq_abs, axisDirection,
+    norm_c0Single, abs_one, mul_one] at ht
+  change ‖-L1Seq.positiveOperator (s • unitDifference 1 r) + s • axisDirection‖ ≤ _
+  change ‖-L1Seq.positiveOperator (s • unitDifference 1 r) + s • axisDirection‖ ≤ _ at ht
+  linarith
+
+/-- Both components of the axis seed base have uniform bounds in the source
+product norm. -/
+theorem axisSeedBase_component_norms_le (r : ℕ) (hr : r ≠ 1) (s : ℝ) :
+    ‖(axisSeedBase (s • unitDifference 1 r) s : C0Seq × L1Seq).1‖ +
+      ‖(axisSeedBase (s • unitDifference 1 r) s : C0Seq × L1Seq).2‖ ≤ 7 * |s| := by
+  have hx := norm_axisSeedBase_fst_le r hr s
+  have hu : ‖(axisSeedBase (s • unitDifference 1 r) s : C0Seq × L1Seq).2‖ ≤
+      2 * |s| := by
+    rw [axisSeedBase_unitDifference_eq r hr s, parametrizedPoint_apply,
+      parametrization_apply]
+    change ‖s • unitDifference 1 r‖ ≤ _
+    rw [norm_smul, Real.norm_eq_abs]
+    nlinarith [norm_unitDifference_le_two 1 r, abs_nonneg s]
+  linarith
+
+/-- The symmetric pairing against an axis seed base is uniformly bounded for
+all source scales of absolute value at most three halves. -/
+theorem abs_symmetricForm_axisSeedBase_le (w : C0Seq × L1Seq)
+    (r : ℕ) (hr : r ≠ 1) (s : ℝ) (hs : |s| ≤ 3 / 2) :
+    |C0Seq.symmetricForm w (axisSeedBase (s • unitDifference 1 r) s)| ≤
+      (21 / 2) * (‖w.1‖ + ‖w.2‖) := by
+  let z : C0Seq × L1Seq := axisSeedBase (s • unitDifference 1 r) s
+  have hz : ‖z.1‖ + ‖z.2‖ ≤ 21 / 2 := by
+    have h := axisSeedBase_component_norms_le r hr s
+    change ‖z.1‖ + ‖z.2‖ ≤ _ at h
+    linarith
+  have hfirst : |C0Seq.pairingL w.1 z.2| ≤ ‖w.1‖ * ‖z.2‖ := by
+    simpa only [C0Seq.pairingL_apply] using C0Seq.abs_tsum_mul_le w.1 z.2
+  have hsecond : |C0Seq.pairingL z.1 w.2| ≤ ‖z.1‖ * ‖w.2‖ := by
+    simpa only [C0Seq.pairingL_apply] using C0Seq.abs_tsum_mul_le z.1 w.2
+  have htriangle := abs_add_le (C0Seq.pairingL w.1 z.2) (C0Seq.pairingL z.1 w.2)
+  have hformula : C0Seq.symmetricForm w z =
+      C0Seq.pairingL w.1 z.2 + C0Seq.pairingL z.1 w.2 :=
+    C0Seq.symmetricForm_apply w.1 z.1 w.2 z.2
+  change |C0Seq.symmetricForm w z| ≤ _
+  rw [hformula]
+  have hwpos : 0 ≤ ‖w.1‖ + ‖w.2‖ := add_nonneg (norm_nonneg _) (norm_nonneg _)
+  have hproduct := mul_le_mul_of_nonneg_left hz hwpos
+  nlinarith [mul_nonneg (norm_nonneg w.1) (norm_nonneg z.1),
+    mul_nonneg (norm_nonneg w.2) (norm_nonneg z.2)]
 
 end Lorentz
