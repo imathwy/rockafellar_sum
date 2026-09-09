@@ -59,6 +59,18 @@ theorem intervalCoordinate_unitDifference (i j : ℕ) :
   rw [map_sub, L1Seq.intervalCoordinateOperator_apply_single,
     L1Seq.intervalCoordinateOperator_apply_single]
 
+/-- The unit-difference detector has the expected rational-time distance. -/
+theorem norm_intervalCoordinate_unitDifference (i j : ℕ) :
+    ‖L1Seq.intervalCoordinateOperator (unitDifference i j)‖ =
+      Real.sqrt |rationalTime i - rationalTime j| := by
+  rw [intervalCoordinate_unitDifference]
+  simpa only [UnitL2.rationalIntervalVec] using
+    (UnitL2.norm_sub_intervalVec
+      (⟨rationalTime i, (rationalTime_mem_Ioo i).1.le,
+        (rationalTime_mem_Ioo i).2.le⟩ : unitInterval)
+      (⟨rationalTime j, (rationalTime_mem_Ioo j).1.le,
+        (rationalTime_mem_Ioo j).2.le⟩ : unitInterval))
+
 /-- Under the annihilation condition, the detector norm is exactly the
 interval-coordinate difference norm. -/
 theorem norm_negativeCoordinate_unitDifferenceDetector
