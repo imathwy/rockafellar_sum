@@ -6,6 +6,8 @@ Authors: Zichen Wang
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzCoordinates.FixedPositive
+public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.UnitDifferenceDetector
+public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Single
 
 /-!
 # Fixed-positive seed bases
@@ -42,5 +44,15 @@ theorem seedBase_zero (d : C0Seq) (s : ℝ) :
     seedBase (0 : L1Seq) s = parametrizedPoint d 0 (2 * s) := by
   unfold seedBase
   simp
+
+/-- The canonical first-axis direction used by the S3 construction. -/
+def axisDirection : C0Seq := c0Single 1 1
+
+/-- The axis direction pairs with a unit difference at coordinate `1` as one
+when the second coordinate is distinct. -/
+theorem pairingL_axisDirection_unitDifference {r : ℕ} (hr : r ≠ 1) :
+    C0Seq.pairingL axisDirection (unitDifference 1 r) = 1 := by
+  rw [pairingL_unitDifference]
+  simp [axisDirection, c0Single_apply, hr]
 
 end Lorentz
