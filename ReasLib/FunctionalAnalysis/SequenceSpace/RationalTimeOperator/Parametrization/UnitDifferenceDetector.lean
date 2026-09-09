@@ -9,6 +9,7 @@ public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Para
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.Pairing
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzEnergy
 public import ReasLib.Topology.RationalTime
+public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.StrictMono
 public import ReasLib.MeasureTheory.UnitL2.IntervalCoordinateOperator
 
 /-!
@@ -98,6 +99,32 @@ theorem tendsto_norm_intervalCoordinate_unitDifference
   have hsqrt := Real.continuous_sqrt.continuousAt.tendsto.comp hdiff
   simpa only [norm_intervalCoordinate_unitDifference, Real.sqrt_zero,
     Function.comp_def] using hsqrt
+
+/-- Pairing with a unit difference reads the corresponding coordinate
+difference. -/
+theorem pairingL_unitDifference (x : C0Seq) (i j : ℕ) :
+    C0Seq.pairingL x (unitDifference i j) = x i - x j := by
+  unfold unitDifference
+  rw [map_sub]
+  have hsingle (n : ℕ) :
+      C0Seq.pairingL x (lp.single 1 n (1 : ℝ)) = x n := by
+    rw [C0Seq.pairingL_apply, tsum_eq_single n]
+    · simp
+    · intro m hm
+      simp [lp.single_apply, hm]
+  rw [hsingle, hsingle]
+
+/-- Along a strictly increasing detector-index subsequence, the residual
+pairing with a unit difference converges to the selected residual coordinate. -/
+theorem tendsto_pairingL_unitDifference_strictMono
+    (x : C0Seq) (i : ℕ) {φ : ℕ → ℕ} (hφ : StrictMono φ) :
+    Filter.Tendsto
+      (fun n ↦ C0Seq.pairingL x (unitDifference i (φ n)))
+      Filter.atTop (𝓝 (x i)) := by
+  have hz := C0Seq.tendsto_apply_strictMono x hφ
+  have hc : Filter.Tendsto (fun _ : ℕ ↦ x i) Filter.atTop (𝓝 (x i)) :=
+    tendsto_const_nhds
+  simpa only [pairingL_unitDifference, sub_zero] using (hc.sub hz)
 
 /-- Under the annihilation condition, the detector norm is exactly the
 interval-coordinate difference norm. -/
