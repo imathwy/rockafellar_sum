@@ -59,6 +59,25 @@ theorem intervalCoordinate_unitDifference (i j : ℕ) :
   rw [map_sub, L1Seq.intervalCoordinateOperator_apply_single,
     L1Seq.intervalCoordinateOperator_apply_single]
 
+/-- Under the annihilation condition, the detector norm is exactly the
+interval-coordinate difference norm. -/
+theorem norm_negativeCoordinate_unitDifferenceDetector
+    (d : C0Seq) (hd : d ≠ 0) (i j : ℕ)
+    (hpair : C0Seq.pairingL d (unitDifference i j) = 0) :
+    ‖negativeCoordinate d hd (unitDifferenceDetector d i j)‖ =
+      ‖L1Seq.intervalCoordinateOperator (unitDifference i j)‖ := by
+  rw [negativeCoordinate_unitDifferenceDetector]
+  have hsq := HilbertProd2.norm_mk_sq
+    (L1Seq.intervalCoordinateOperator (unitDifference i j))
+    (-(C0Seq.pairingL d (unitDifference i j)) / 2)
+  have hsq' :
+      ‖HilbertProd2.mk (L1Seq.intervalCoordinateOperator (unitDifference i j))
+          (-(C0Seq.pairingL d (unitDifference i j)) / 2)‖ ^ 2 =
+        ‖L1Seq.intervalCoordinateOperator (unitDifference i j)‖ ^ 2 := by
+    simpa [hpair] using hsq
+  apply (sq_eq_sq₀ (norm_nonneg _) (norm_nonneg _)).mp
+  exact hsq'
+
 /-- The symmetric pairing with a unit-difference detector is given by the
 detector pairing formula, with no remote-copy approximation involved. -/
 theorem symmetricForm_unitDifferenceDetector
