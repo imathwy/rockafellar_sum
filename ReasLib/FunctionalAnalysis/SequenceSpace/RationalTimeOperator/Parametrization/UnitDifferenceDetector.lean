@@ -151,6 +151,56 @@ theorem tendsto_inner_unitDifference_strictMono
     hu.inner hv
   simpa using hi
 
+/-- The full symmetric pairing with unit-difference detectors converges to the
+selected residual coordinate when the parametrizing vector annihilates the
+detector coordinates. -/
+private theorem symmetricForm_unitDifferenceDetector_aux
+    (d x : C0Seq) (u : L1Seq) (i j : ℕ)
+    (hpair : C0Seq.pairingL d (unitDifference i j) = 0) :
+    C0Seq.symmetricForm (x, u) (unitDifferenceDetector d i j) =
+      C0Seq.pairingL (x + L1Seq.positiveOperator u) (unitDifference i j) -
+        2 * ⟪L1Seq.intervalCoordinateOperator u,
+          L1Seq.intervalCoordinateOperator (unitDifference i j)⟫_ℝ := by
+  unfold unitDifferenceDetector
+  rw [parametrizedPoint_apply]
+  simpa [hpair] using (detectorPairingFormula d x u (unitDifference i j))
+
+theorem tendsto_symmetricForm_unitDifferenceDetector
+    (d x : C0Seq) (u : L1Seq) (i : ℕ) {φ : ℕ → ℕ}
+    (hφ : StrictMono φ)
+    (hpair : ∀ n, C0Seq.pairingL d (unitDifference i (φ n)) = 0)
+    (hφtime : Filter.Tendsto (rationalTime ∘ φ) Filter.atTop
+      (𝓝 (rationalTime i))) :
+    Filter.Tendsto
+      (fun n ↦ C0Seq.symmetricForm (x, u)
+        (unitDifferenceDetector d i (φ n)))
+      Filter.atTop
+      (𝓝 ((x + L1Seq.positiveOperator u) i)) := by
+  have hfirst := tendsto_pairingL_unitDifference_strictMono
+    (x + L1Seq.positiveOperator u) i hφ
+  have hinner := tendsto_inner_unitDifference_strictMono u i hφtime
+  have hform : ∀ n,
+      C0Seq.symmetricForm (x, u) (unitDifferenceDetector d i (φ n)) =
+        C0Seq.pairingL (x + L1Seq.positiveOperator u)
+            (unitDifference i (φ n)) -
+          2 * ⟪L1Seq.intervalCoordinateOperator u,
+            L1Seq.intervalCoordinateOperator (unitDifference i (φ n))⟫_ℝ := by
+    intro n
+    simpa only [hpair n, mul_zero, sub_zero] using
+      symmetricForm_unitDifferenceDetector_aux d x u i (φ n) (hpair n)
+  have hscaled := hinner.const_mul 2
+  have hsub := hfirst.sub hscaled
+  have hsub' : Filter.Tendsto
+      (fun n ↦ C0Seq.pairingL (x + L1Seq.positiveOperator u)
+          (unitDifference i (φ n)) -
+        2 * ⟪L1Seq.intervalCoordinateOperator u,
+          L1Seq.intervalCoordinateOperator (unitDifference i (φ n))⟫_ℝ)
+      Filter.atTop (𝓝 ((x + L1Seq.positiveOperator u) i - 2 * 0)) := by
+    simpa only [Function.comp_apply] using hsub
+  have hh := hsub'.congr'
+    (Filter.Eventually.of_forall (fun n ↦ (hform n).symm))
+  simpa only [sub_zero, mul_zero] using hh
+
 /-- Under the annihilation condition, the detector norm is exactly the
 interval-coordinate difference norm. -/
 theorem norm_negativeCoordinate_unitDifferenceDetector
