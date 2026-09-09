@@ -58,4 +58,17 @@ theorem quadraticPairing_scaledDetector_expansion {d : C0Seq} (hd : d ≠ 0)
     (positiveCoordinate d hd ξ, negativeCoordinate d hd ξ)
     (positiveCoordinate d hd h, negativeCoordinate d hd h) r
 
+/-- The scaled energy formula simplifies when the detector direction has zero
+positive Lorentz coordinate. -/
+theorem quadraticPairing_scaledDetector_zeroPositive
+    {d : C0Seq} (hd : d ≠ 0) (ξ h : parametrizedSubspace d) (r : ℝ)
+    (hP : positiveCoordinate d hd h = 0) :
+    C0Seq.quadraticPairing (scaledDetector ξ h r) =
+      C0Seq.quadraticPairing ξ -
+        2 * r * ⟪negativeCoordinate d hd ξ,
+          negativeCoordinate d hd h⟫_ℝ +
+        r ^ 2 * C0Seq.quadraticPairing h := by
+  rw [quadraticPairing_scaledDetector_expansion d hd ξ h r, hP]
+  ring
+
 end Lorentz
