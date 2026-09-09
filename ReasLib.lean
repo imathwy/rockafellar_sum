@@ -23,6 +23,10 @@ public import ReasLib.Analysis.Normed.Group.Approximation
 public import ReasLib.Analysis.Normed.Group.Sequences
 public import ReasLib.Analysis.Normed.LorentzCone
 public import ReasLib.Analysis.Normed.LorentzCone.HilbertProd2
+public import ReasLib.Analysis.Normed.LorentzCone.PolarDivergence
+public import ReasLib.Analysis.Normed.LorentzCone.ScaledDivergence
+public import ReasLib.Analysis.Normed.LorentzCone.SeedMonotone
+public import ReasLib.Analysis.Normed.LorentzCone.SeedTemplate
 public import ReasLib.Analysis.Normed.Module.Dual
 public import ReasLib.Analysis.Normed.Operator.Bilinear
 public import ReasLib.Analysis.Normed.Operator.Range
@@ -36,7 +40,9 @@ public import ReasLib.Combinatorics.DetectorSchedule
 public import ReasLib.Combinatorics.DetectorTriple
 public import ReasLib.Data.Countable.RepeatingSchedule
 public import ReasLib.FunctionalAnalysis.DualPairing
+public import ReasLib.FunctionalAnalysis.DualPairing.MaximalExtension
 public import ReasLib.FunctionalAnalysis.DualPairing.Monotone
+public import ReasLib.FunctionalAnalysis.DualPairing.PolarCarrier
 public import ReasLib.FunctionalAnalysis.FiniteProductDual
 public import ReasLib.FunctionalAnalysis.FiniteProductDual.Annihilator
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0
@@ -50,6 +56,7 @@ public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Pairing.RemoteSupport
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.ProductPairing
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Proportionality
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Single
+public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.StrictMono
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Transpose
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.TwoCoordinateDeterminant
 public import ReasLib.FunctionalAnalysis.SequenceSpace.L1.Annihilator
@@ -65,9 +72,11 @@ public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Join
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.JointCoordinateMap.Annihilator.Elimination
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.JointCoordinateMap.Annihilator.Triviality
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.JointCoordinateMap.DenseRange
+public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Norm
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.ClosedRange
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.Convergence
+public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.FiniteDetector
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.FoldedRightVertex
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.FoldedRightVertex.AffineInterpolation
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.FoldedRightVertex.Asymptotics
@@ -76,24 +85,6 @@ public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Para
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.FoldedRightVertex.Lipschitz
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.FoldedRightVertex.LorentzCone
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.FoldedRightVertex.Pairing
-public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve
-public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Continuity
-public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Graph
-public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Graph.Realization
-public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Graph.RightVertex
-public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Lipschitz
-public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Localization
-public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Maximal
-public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Monotone
-public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Operator
-public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Operator.ConstraintQualification
-public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Operator.Counterexample
-public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Operator.Localization
-public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Operator.NormalCone
-public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Operator.Realization
-public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Polar
-public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Polar.Rigidity
-public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.GhostCurve.Realization
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.Injective
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LeftAnchor
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LeftAnchor.AffineInterpolation
@@ -117,6 +108,7 @@ public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Para
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzEmbedding.Injective
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzEmbedding.PastRay
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzEnergy
+public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzSeed
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.Pairing
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.Point
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.RemoteDetectorCoordinates
@@ -125,7 +117,18 @@ public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Para
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.RemoteDetectorPoint.Detection
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.RemoteDetectorPoint.Pairing
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.RemoteTimeZero
+public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.S3Seed
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.SamePositiveCoordinate
+public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.ScaledDetector
+public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.SeedAssembly
+public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.SeedBase
+public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.SeedComparisons
+public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.SeedCounterexample
+public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.SeedDetector
+public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.SeedSchedule
+public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.SeedSet
+public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.SeedWitnesses
+public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.UnitDifferenceDetector
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.PositiveDefinite
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.ProperRange
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Quadratic
@@ -161,5 +164,5 @@ public import ReasLib.Topology.Sequences
 /-!
 # ReasLib
 
-Reusable mathematical infrastructure for this project.
+Reusable infrastructure and the S3 seed formalization.
 -/

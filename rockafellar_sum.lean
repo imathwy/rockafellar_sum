@@ -6,11 +6,10 @@ Authors: Zichen Wang
 module
 
 public import ReasLib
-public import S2
+public import S3
 
 /-!
 # rockafellar_sum
 
-Top-level Lean library module for this generated project.
-Generated item files live at their repo-relative target paths.
+Top-level library entry point for the S3 seed proof and reusable infrastructure.
 -/
