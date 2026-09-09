@@ -8,6 +8,7 @@ module
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzCoordinates.FixedPositive
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.UnitDifferenceDetector
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Single
+public import ReasLib.Analysis.Normed.LorentzCone.SeedTemplate
 
 /-!
 # Fixed-positive seed bases
@@ -75,6 +76,21 @@ theorem negativeCoordinate_axisSeedBase
   rw [negativeCoordinate_seedBase]
   rw [map_smul, map_smul, pairingL_axisDirection_unitDifference hr]
   simp
+
+/-- The negative-coordinate norm of an axis seed base is controlled by the
+corresponding rational-time interval distance. -/
+theorem norm_negativeCoordinate_axisSeedBase
+    (r : ℕ) (hr : r ≠ 1) (s : ℝ) :
+    ‖negativeCoordinate axisDirection (by
+      intro h
+      have h₁ := congrArg (fun x : C0Seq ↦ x 1) h
+      simp [axisDirection, c0Single_apply] at h₁)
+        (axisSeedBase (s • unitDifference 1 r) s)‖ =
+      |s| * Real.sqrt |rationalTime 1 - rationalTime r| := by
+  rw [negativeCoordinate_axisSeedBase r hr s]
+  rw [norm_hilbertProd_mk_zero, map_smul, norm_smul]
+  rw [norm_intervalCoordinate_unitDifference]
+  simp only [Real.norm_eq_abs]
 
 
 end Lorentz
