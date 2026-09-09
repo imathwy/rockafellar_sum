@@ -7,6 +7,7 @@ module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzCoordinates
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.Pairing
+public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzEnergy
 public import ReasLib.Topology.RationalTime
 public import ReasLib.MeasureTheory.UnitL2.IntervalCoordinateOperator
 
@@ -116,6 +117,18 @@ theorem norm_negativeCoordinate_unitDifferenceDetector
     simpa [hpair] using hsq
   apply (sq_eq_sq₀ (norm_nonneg _) (norm_nonneg _)).mp
   exact hsq'
+
+/-- Under the annihilation condition, the finite detector has nonpositive
+quadratic energy equal to the negative squared interval distance. -/
+theorem quadraticPairing_unitDifferenceDetector
+    (d : C0Seq) (hd : d ≠ 0) (i j : ℕ)
+    (hpair : C0Seq.pairingL d (unitDifference i j) = 0) :
+    C0Seq.quadraticPairing (unitDifferenceDetector d i j) =
+      -‖L1Seq.intervalCoordinateOperator (unitDifference i j)‖ ^ 2 := by
+  rw [quadraticIdentity d hd]
+  rw [positiveCoordinate_unitDifferenceDetector d hd i j hpair]
+  rw [norm_negativeCoordinate_unitDifferenceDetector d hd i j hpair]
+  norm_num
 
 /-- The symmetric pairing with a unit-difference detector is given by the
 detector pairing formula, with no remote-copy approximation involved. -/
