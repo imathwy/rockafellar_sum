@@ -14,7 +14,7 @@ public import ReasLib.FunctionalAnalysis.DualPairing.Monotone
 # Fixed signed schedule for the S3 seed
 
 Natural index n represents source index n + 1. The signed coordinate label
-(q, b) represents coordinate q + 2 and sign determined by b.
+(q, b) represents a coordinate other than one and sign determined by b.
 -/
 
 public section
@@ -43,8 +43,22 @@ theorem exists_remote_unitDifference_norm_lt (q N : ℕ) (ε : ℝ) (hε : 0 < �
 noncomputable def seedSchedule : RepeatingSchedule (ℕ × Bool) :=
   RepeatingSchedule.ofCountable (ℕ × Bool)
 
+/-- Enumerate every coordinate except the distinguished axis, including zero. -/
+def offAxisCoordinate (q : ℕ) : ℕ := if q = 0 then 0 else q + 1
+
 /-- The detected coordinate is always different from the distinguished axis. -/
-noncomputable def seedCoordinate (n : ℕ) : ℕ := (seedSchedule.toFun n).1 + 2
+noncomputable def seedCoordinate (n : ℕ) : ℕ := offAxisCoordinate (seedSchedule.toFun n).1
+
+/-- Every off-axis coordinate is represented by a label. -/
+theorem exists_offAxisCoordinate_eq (i : ℕ) (hi : i ≠ 1) :
+    ∃ q, offAxisCoordinate q = i := by
+  by_cases hz : i = 0
+  · refine ⟨0, ?_⟩
+    simp [offAxisCoordinate, hz]
+  · refine ⟨i - 1, ?_⟩
+    have hne : i - 1 ≠ 0 := by omega
+    simp only [offAxisCoordinate, if_neg hne]
+    omega
 
 /-- The sign attached to the scheduled coordinate. -/
 noncomputable def seedSign (n : ℕ) : ℝ := if (seedSchedule.toFun n).2 then 1 else -1
@@ -120,16 +134,19 @@ theorem seed_axis_ne_zero : axisDirection ≠ 0 := by
 /-- The selected base index is outside the distinguished coordinate. -/
 theorem seedBaseIndex_ne_one (n : ℕ) : seedBaseIndex n ≠ 1 := by
   have h := (seed_indices_spec n).1
-  have hc : 2 ≤ seedCoordinate n := by unfold seedCoordinate; omega
+  have hn : 1 ≤ n + 1 := by omega
   omega
 
 /-- The axis annihilates the selected detector's unit difference. -/
 theorem pairing_seed_detector_zero (n : ℕ) :
     C0Seq.pairingL axisDirection
       (unitDifference (seedCoordinate n) (seedDetectorIndex n)) = 0 := by
-  have hc : 2 ≤ seedCoordinate n := by unfold seedCoordinate; omega
   have hi := seed_indices_spec n
-  have hq : seedCoordinate n ≠ 1 := by omega
+  have hq : seedCoordinate n ≠ 1 := by
+    unfold seedCoordinate offAxisCoordinate
+    split_ifs with h
+    · omega
+    · omega
   have hk : seedDetectorIndex n ≠ 1 := by omega
   rw [pairingL_unitDifference]
   simp [axisDirection_apply, hq, hk]
@@ -334,18 +351,18 @@ theorem seedDetector_pairing_tendsto (x : C0Seq) (u : L1Seq) (q : ℕ) (b : Bool
       (unitDifferenceDetector axisDirection
         (seedCoordinate (seedSchedule.occurrence (q, b) k))
         (seedDetectorIndex (seedSchedule.occurrence (q, b) k))))
-      atTop (𝓝 ((x + L1Seq.positiveOperator u) (q + 2))) := by
+      atTop (𝓝 ((x + L1Seq.positiveOperator u) (offAxisCoordinate q))) := by
   let f := seedSchedule.occurrence (q, b)
   have hf : Tendsto f atTop atTop := (seedSchedule.strictMono_occurrence (q, b)).tendsto_atTop
-  have hq (k : ℕ) : seedCoordinate (f k) = q + 2 := by
+  have hq (k : ℕ) : seedCoordinate (f k) = offAxisCoordinate q := by
     unfold seedCoordinate f
     rw [seedSchedule.apply_occurrence]
   have hx : Tendsto (fun k ↦ (x + L1Seq.positiveOperator u) (seedDetectorIndex (f k)))
       atTop (𝓝 0) :=
     (C0Seq.tendsto_zero (x + L1Seq.positiveOperator u)).comp
       (seedDetectorIndex_tendsto_atTop.comp hf)
-  have hc : Tendsto (fun _ : ℕ ↦ (x + L1Seq.positiveOperator u) (q + 2)) atTop
-      (𝓝 ((x + L1Seq.positiveOperator u) (q + 2))) := tendsto_const_nhds
+  have hc : Tendsto (fun _ : ℕ ↦ (x + L1Seq.positiveOperator u) (offAxisCoordinate q)) atTop
+      (𝓝 ((x + L1Seq.positiveOperator u) (offAxisCoordinate q))) := tendsto_const_nhds
   have hv := seedDetector_interval_tendsto_zero.comp hf
   have hu : Tendsto (fun _ : ℕ ↦ L1Seq.intervalCoordinateOperator u) atTop
       (𝓝 (L1Seq.intervalCoordinateOperator u)) := tendsto_const_nhds
@@ -356,7 +373,7 @@ theorem seedDetector_pairing_tendsto (x : C0Seq) (u : L1Seq) (q : ℕ) (b : Bool
     simpa only [inner_zero_right, Function.comp_apply] using hu.inner hv
   have he (k : ℕ) : C0Seq.symmetricForm (x, u)
       (unitDifferenceDetector axisDirection (seedCoordinate (f k)) (seedDetectorIndex (f k))) =
-      (x + L1Seq.positiveOperator u) (q + 2) -
+      (x + L1Seq.positiveOperator u) (offAxisCoordinate q) -
         (x + L1Seq.positiveOperator u) (seedDetectorIndex (f k)) -
         2 * ⟪L1Seq.intervalCoordinateOperator u, L1Seq.intervalCoordinateOperator
           (unitDifference (seedCoordinate (f k)) (seedDetectorIndex (f k)))⟫_ℝ := by
@@ -365,5 +382,18 @@ theorem seedDetector_pairing_tendsto (x : C0Seq) (u : L1Seq) (q : ℕ) (b : Bool
   have h := (hc.sub hx).sub (hi.const_mul 2)
   have hout := h.congr' (Eventually.of_forall (fun k ↦ (he k).symm))
   simpa only [mul_zero, sub_zero] using hout
+
+/-- Vanishing residual coordinates off the axis characterize the carrier. -/
+theorem mem_axisCarrier_of_residual_zero (x : C0Seq) (u : L1Seq)
+    (h : ∀ i, i ≠ 1 → (x + L1Seq.positiveOperator u) i = 0) :
+    (x, u) ∈ parametrizedSubspace axisDirection := by
+  apply (mk_mem_parametrizedSubspace_iff axisDirection x u).2
+  rw [Submodule.mem_span_singleton]
+  refine ⟨(x + L1Seq.positiveOperator u) 1, ?_⟩
+  ext i
+  by_cases hi : i = 1
+  · subst i
+    simp [ZeroAtInftyContinuousMap.smul_apply, axisDirection_apply]
+  · simp [ZeroAtInftyContinuousMap.smul_apply, axisDirection_apply, hi, h i hi]
 
 end Lorentz
