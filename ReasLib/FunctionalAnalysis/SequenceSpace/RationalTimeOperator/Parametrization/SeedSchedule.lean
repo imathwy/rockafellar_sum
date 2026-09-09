@@ -20,6 +20,7 @@ Natural index n represents source index n + 1. The signed coordinate label
 public section
 
 open Filter Topology
+open scoped InnerProductSpace
 
 namespace Lorentz
 
@@ -301,5 +302,68 @@ theorem seedPoint_range_isMonotone :
   rintro w ⟨j, rfl⟩
   rw [← C0Seq.quadraticPairing_eq_coordinateQuadratic]
   exact quadraticPairing_seedPoint_sub_nonneg i j
+
+/-- Remote detector indices escape every finite prefix. -/
+theorem seedDetectorIndex_tendsto_atTop : Tendsto seedDetectorIndex atTop atTop := by
+  apply tendsto_atTop_mono _ tendsto_id
+  intro n
+  have h := seed_indices_spec n
+  change n ≤ seedDetectorIndex n
+  omega
+
+/-- The unscaled detectors have vanishing interval coordinates. -/
+theorem seedDetector_interval_tendsto_zero :
+    Tendsto (fun n ↦ L1Seq.intervalCoordinateOperator
+      (unitDifference (seedCoordinate n) (seedDetectorIndex n))) atTop (𝓝 0) := by
+  apply tendsto_zero_iff_norm_tendsto_zero.mpr
+  apply squeeze_zero (fun _ ↦ norm_nonneg _) _ seedRadius_tendsto_zero
+  intro n
+  have h := (seed_indices_spec n).2.2.2
+  have hn : (1 : ℝ) ≤ n + 1 := by
+    have h : (0 : ℝ) ≤ n := Nat.cast_nonneg n
+    linarith
+  have hnorm := norm_nonneg (L1Seq.intervalCoordinateOperator
+    (unitDifference (seedCoordinate n) (seedDetectorIndex n)))
+  have hρ := seedRadius_pos n
+  nlinarith
+
+/-- Along the fixed occurrence subsequence, the detector pairing converges
+to the corresponding residual coordinate. -/
+theorem seedDetector_pairing_tendsto (x : C0Seq) (u : L1Seq) (q : ℕ) (b : Bool) :
+    Tendsto (fun k ↦ C0Seq.symmetricForm (x, u)
+      (unitDifferenceDetector axisDirection
+        (seedCoordinate (seedSchedule.occurrence (q, b) k))
+        (seedDetectorIndex (seedSchedule.occurrence (q, b) k))))
+      atTop (𝓝 ((x + L1Seq.positiveOperator u) (q + 2))) := by
+  let f := seedSchedule.occurrence (q, b)
+  have hf : Tendsto f atTop atTop := (seedSchedule.strictMono_occurrence (q, b)).tendsto_atTop
+  have hq (k : ℕ) : seedCoordinate (f k) = q + 2 := by
+    unfold seedCoordinate f
+    rw [seedSchedule.apply_occurrence]
+  have hx : Tendsto (fun k ↦ (x + L1Seq.positiveOperator u) (seedDetectorIndex (f k)))
+      atTop (𝓝 0) :=
+    (C0Seq.tendsto_zero (x + L1Seq.positiveOperator u)).comp
+      (seedDetectorIndex_tendsto_atTop.comp hf)
+  have hc : Tendsto (fun _ : ℕ ↦ (x + L1Seq.positiveOperator u) (q + 2)) atTop
+      (𝓝 ((x + L1Seq.positiveOperator u) (q + 2))) := tendsto_const_nhds
+  have hv := seedDetector_interval_tendsto_zero.comp hf
+  have hu : Tendsto (fun _ : ℕ ↦ L1Seq.intervalCoordinateOperator u) atTop
+      (𝓝 (L1Seq.intervalCoordinateOperator u)) := tendsto_const_nhds
+  have hi : Tendsto (fun k ↦ ⟪L1Seq.intervalCoordinateOperator u,
+      L1Seq.intervalCoordinateOperator
+        (unitDifference (seedCoordinate (f k)) (seedDetectorIndex (f k)))⟫_ℝ)
+      atTop (𝓝 0) := by
+    simpa only [inner_zero_right, Function.comp_apply] using hu.inner hv
+  have he (k : ℕ) : C0Seq.symmetricForm (x, u)
+      (unitDifferenceDetector axisDirection (seedCoordinate (f k)) (seedDetectorIndex (f k))) =
+      (x + L1Seq.positiveOperator u) (q + 2) -
+        (x + L1Seq.positiveOperator u) (seedDetectorIndex (f k)) -
+        2 * ⟪L1Seq.intervalCoordinateOperator u, L1Seq.intervalCoordinateOperator
+          (unitDifference (seedCoordinate (f k)) (seedDetectorIndex (f k)))⟫_ℝ := by
+    rw [symmetricForm_unitDifferenceDetector _ _ _ _ _ (pairing_seed_detector_zero (f k)),
+      pairing_seed_detector_zero, mul_zero, sub_zero, pairingL_unitDifference, hq]
+  have h := (hc.sub hx).sub (hi.const_mul 2)
+  have hout := h.congr' (Eventually.of_forall (fun k ↦ (he k).symm))
+  simpa only [mul_zero, sub_zero] using hout
 
 end Lorentz
