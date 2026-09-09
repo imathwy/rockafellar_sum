@@ -55,4 +55,25 @@ theorem pairingL_axisDirection_unitDifference {r : ℕ} (hr : r ≠ 1) :
   rw [pairingL_unitDifference]
   simp [axisDirection, c0Single_apply, hr]
 
+/-- The fixed-positive seed base specialized to the first-axis direction. -/
+noncomputable def axisSeedBase (a : L1Seq) (s : ℝ) :
+    parametrizedSubspace axisDirection :=
+  seedBase a s
+
+/-- For a scaled unit difference away from coordinate one, the axis seed base
+has vanishing scalar negative coordinate. -/
+theorem negativeCoordinate_axisSeedBase
+    (r : ℕ) (hr : r ≠ 1) (s : ℝ) :
+    negativeCoordinate axisDirection (by
+      intro h
+      have h₁ := congrArg (fun x : C0Seq ↦ x 1) h
+      simp [axisDirection, c0Single_apply] at h₁)
+        (axisSeedBase (s • unitDifference 1 r) s) =
+      HilbertProd2.mk
+        (L1Seq.intervalCoordinateOperator (s • unitDifference 1 r)) 0 := by
+  unfold axisSeedBase
+  rw [negativeCoordinate_seedBase]
+  rw [map_smul, map_smul, pairingL_axisDirection_unitDifference hr]
+  simp
+
 end Lorentz
