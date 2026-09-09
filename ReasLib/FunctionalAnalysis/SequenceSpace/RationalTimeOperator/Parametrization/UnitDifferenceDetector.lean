@@ -259,4 +259,52 @@ theorem symmetricForm_unitDifferenceDetector
   rw [parametrizedPoint_apply]
   simpa [hpair] using (detectorPairingFormula d x u (unitDifference i j))
 
+/-- The diagonal coordinate of the triangular operator on a forward unit
+difference records the jump in its interval kernel. -/
+theorem positiveOperator_unitDifference_apply_left (i j : ℕ) (hij : i < j) :
+    L1Seq.positiveOperator (unitDifference i j) i =
+      rationalTime i - 2 * min (rationalTime i) (rationalTime j) := by
+  have hne : i ≠ j := ne_of_lt hij
+  have hji : j ≠ i := Ne.symm hne
+  have hdiag : unitDifference i j i = 1 := by
+    simp [unitDifference, lp.single_apply, hne]
+  have htail : (∑' m : ℕ, if i < m then min (rationalTime i) (rationalTime m) *
+      unitDifference i j m else 0) = -min (rationalTime i) (rationalTime j) := by
+    rw [tsum_eq_single j]
+    · simp [hij, unitDifference, lp.single_apply, hji]
+    · intro m hm
+      by_cases hmi : m = i
+      · subst m
+        simp
+      · simp [unitDifference, lp.single_apply, hm, hmi]
+  rw [L1Seq.positiveOperator_apply, hdiag, htail]
+  ring
+
+/-- Close forward interval endpoints force a sizeable negative diagonal
+coordinate of the operator on their unit difference. -/
+theorem positiveOperator_unitDifference_apply_left_lt (i j : ℕ) (hij : i < j)
+    (hclose : |rationalTime i - rationalTime j| < rationalTime i / 4) :
+    L1Seq.positiveOperator (unitDifference i j) i < -rationalTime i / 2 := by
+  rw [positiveOperator_unitDifference_apply_left i j hij]
+  have ht := (rationalTime_mem_Ioo i).1
+  have hdiff := (abs_lt.mp hclose).2
+  have hm : 3 * rationalTime i / 4 < min (rationalTime i) (rationalTime j) := by
+    apply lt_min
+    · linarith
+    · linarith
+  linarith
+
+/-- The primal component of a close forward unit detector has a positive
+lower norm bound, even though its Hilbert component can be arbitrarily small. -/
+theorem unitDifferenceDetector_primal_norm_lower (d : C0Seq) (i j : ℕ) (hij : i < j)
+    (hclose : |rationalTime i - rationalTime j| < rationalTime i / 4) :
+    rationalTime i / 2 < ‖(unitDifferenceDetector d i j : C0Seq × L1Seq).1‖ := by
+  have hc := positiveOperator_unitDifference_apply_left_lt i j hij hclose
+  have hn := C0Seq.abs_apply_le_norm (L1Seq.positiveOperator (unitDifference i j)) i
+  have ha := neg_le_abs (L1Seq.positiveOperator (unitDifference i j) i)
+  unfold unitDifferenceDetector
+  rw [parametrizedPoint_apply, parametrization_apply]
+  simp only [zero_smul, add_zero, norm_neg]
+  linarith
+
 end Lorentz
