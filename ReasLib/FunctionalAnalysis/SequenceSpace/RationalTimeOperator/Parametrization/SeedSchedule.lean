@@ -8,6 +8,7 @@ module
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.SeedBase
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.ScaledDetector
 public import ReasLib.Data.Countable.RepeatingSchedule
+public import ReasLib.FunctionalAnalysis.DualPairing.Monotone
 
 /-!
 # Fixed signed schedule for the S3 seed
@@ -237,5 +238,68 @@ theorem seedPoint_base_pairing_bound (w : C0Seq × L1Seq) (n : ℕ) :
   apply abs_symmetricForm_axisSeedBase_le w _ (seedBaseIndex_ne_one n)
   rw [abs_of_pos (seedTime_pos n)]
   exact (seedTime_bounds n).2
+
+/-- The sum of perturbation radii is smaller than the gap of distinct positive times. -/
+theorem seedRadius_add_lt_time_gap {i j : ℕ} (hij : i < j) :
+    seedRadius i + seedRadius j < seedTime i - seedTime j := by
+  have hzero : (0 : ℝ) ≤ 1 / 2 := by norm_num
+  have hone : (1 / 2 : ℝ) ≤ 1 := by norm_num
+  have hpow : (1 / 2 : ℝ) ^ j ≤ (1 / 2 : ℝ) ^ (i + 1) :=
+    pow_le_pow_of_le_one hzero hone hij
+  have hpos : 0 < (1 / 2 : ℝ) ^ i := by positivity
+  unfold seedRadius seedTime
+  simp only [pow_add, pow_one] at hpow ⊢
+  norm_num
+  nlinarith
+
+/-- Distinct scheduled points satisfy the Lorentz Lipschitz estimate. -/
+theorem norm_negativeCoordinate_seedPoint_sub_le (i j : ℕ) :
+    ‖negativeCoordinate axisDirection seed_axis_ne_zero (seedPoint i) -
+      negativeCoordinate axisDirection seed_axis_ne_zero (seedPoint j)‖ ≤
+        |seedTime i - seedTime j| := by
+  rcases lt_trichotomy i j with hij | hij | hij
+  · have hgap := seedRadius_add_lt_time_gap hij
+    have hi := norm_negativeCoordinate_seedPoint_lt i
+    have hj := norm_negativeCoordinate_seedPoint_lt j
+    have ht := norm_sub_le
+      (negativeCoordinate axisDirection seed_axis_ne_zero (seedPoint i))
+      (negativeCoordinate axisDirection seed_axis_ne_zero (seedPoint j))
+    exact le_trans ht (le_trans (by linarith) (le_abs_self _))
+  · subst j
+    simp
+  · have hgap := seedRadius_add_lt_time_gap hij
+    have hi := norm_negativeCoordinate_seedPoint_lt i
+    have hj := norm_negativeCoordinate_seedPoint_lt j
+    have ht := norm_sub_le
+      (negativeCoordinate axisDirection seed_axis_ne_zero (seedPoint i))
+      (negativeCoordinate axisDirection seed_axis_ne_zero (seedPoint j))
+    have habs : seedTime j - seedTime i ≤ |seedTime i - seedTime j| := by
+      rw [abs_sub_comm]
+      exact le_abs_self _
+    exact le_trans ht (le_trans (by linarith) habs)
+
+/-- The difference of any two scheduled seed points has nonnegative pairing. -/
+theorem quadraticPairing_seedPoint_sub_nonneg (i j : ℕ) :
+    0 ≤ C0Seq.quadraticPairing
+      ((seedPoint i : C0Seq × L1Seq) - (seedPoint j : C0Seq × L1Seq)) := by
+  have he := quadraticIdentity axisDirection seed_axis_ne_zero (seedPoint i - seedPoint j)
+  rw [map_sub, map_sub, positiveCoordinate_seedPoint, positiveCoordinate_seedPoint] at he
+  have hb := norm_negativeCoordinate_seedPoint_sub_le i j
+  have hs := (sq_le_sq₀ (norm_nonneg _) (abs_nonneg _)).mpr hb
+  rw [sq_abs] at hs
+  rw [← Submodule.coe_sub]
+  rw [he]
+  linarith
+
+/-- The set of actual scheduled detector perturbations is monotone. -/
+theorem seedPoint_range_isMonotone :
+    C0Seq.coordinateDualPairing.IsMonotone
+      (Set.range (fun n ↦ (seedPoint n : C0Seq × L1Seq))) := by
+  apply (C0Seq.coordinateDualPairing.isMonotone_iff_subset_polar _).2
+  rintro z ⟨i, rfl⟩
+  rw [C0Seq.coordinateDualPairing.mem_monotonePolar]
+  rintro w ⟨j, rfl⟩
+  rw [← C0Seq.quadraticPairing_eq_coordinateQuadratic]
+  exact quadraticPairing_seedPoint_sub_nonneg i j
 
 end Lorentz
