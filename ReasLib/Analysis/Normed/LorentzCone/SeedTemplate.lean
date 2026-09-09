@@ -17,6 +17,8 @@ particular interval-coordinate realization.
 
 @[expose] public section
 
+open scoped InnerProductSpace
+
 universe u
 
 namespace Lorentz
@@ -68,5 +70,20 @@ theorem affine_halfLine_mem_pastCone_of_small_base {H : Type u}
         simp only [norm_smul, Real.norm_eq_abs, abs_of_nonneg hpp]
         gcongr
       _ ≤ 1 - p := by nlinarith
+
+/-- Lorentz energy has the expected quadratic expansion along a scaled
+direction. -/
+theorem energy_add_smul_expansion {H : Type u}
+    [NormedAddCommGroup H] [InnerProductSpace ℝ H]
+    (z h : ℝ × H) (r : ℝ) :
+    energy (z.1 + r * h.1, z.2 + r • h.2) =
+      energy z + 2 * r * (z.1 * h.1 - ⟪z.2, h.2⟫_ℝ) +
+        r ^ 2 * energy h := by
+  rw [energy_apply, energy_apply, energy_apply]
+  rw [norm_add_sq_real, norm_smul]
+  simp only [real_inner_smul_right]
+  simp only [Real.norm_eq_abs]
+  rw [mul_pow, sq_abs]
+  ring
 
 end Lorentz
