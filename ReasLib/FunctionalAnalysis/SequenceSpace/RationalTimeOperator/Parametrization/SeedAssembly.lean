@@ -27,6 +27,12 @@ def assembledSeed (z v : parametrizedSubspace axisDirection) : Set (C0Seq × L1S
     (∃ n : ℕ, w = (seedPoint n : C0Seq × L1Seq)) ∨
     w = ((2 : ℝ) • v : parametrizedSubspace axisDirection)}
 
+/-- The twice-direction anchor belongs to every assembled source seed. -/
+theorem seed_anchor_mem (z v : parametrizedSubspace axisDirection) :
+    (((2 : ℝ) • v : parametrizedSubspace axisDirection) : C0Seq × L1Seq) ∈
+      assembledSeed z v := by
+  exact Or.inr (Or.inr rfl)
+
 /-- The full seed polar is contained in the carrier. -/
 theorem assembledSeed_polar_subset_carrier (z v : parametrizedSubspace axisDirection) :
     C0Seq.monotonePolar (assembledSeed z v) ⊆ parametrizedSubspace axisDirection := by
