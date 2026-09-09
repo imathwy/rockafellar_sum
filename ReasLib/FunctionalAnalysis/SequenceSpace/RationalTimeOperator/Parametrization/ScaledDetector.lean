@@ -23,6 +23,12 @@ namespace Lorentz
 noncomputable def scaledDetector {d : C0Seq} (ξ h : parametrizedSubspace d) (r : ℝ) :
     parametrizedSubspace d := ξ + r • h
 
+/-- The ambient value of a scaled detector is its affine combination. -/
+theorem coe_scaledDetector {d : C0Seq} (ξ h : parametrizedSubspace d) (r : ℝ) :
+    (scaledDetector ξ h r : C0Seq × L1Seq) =
+      (ξ : C0Seq × L1Seq) + r • (h : C0Seq × L1Seq) := by
+  rfl
+
 /-- Positive Lorentz coordinates of a scaled detector combination expand
 linearly. -/
 theorem positiveCoordinate_scaledDetector {d : C0Seq} (hd : d ≠ 0)

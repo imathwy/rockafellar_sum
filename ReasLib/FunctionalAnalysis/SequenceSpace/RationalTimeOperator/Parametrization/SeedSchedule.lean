@@ -396,4 +396,93 @@ theorem mem_axisCarrier_of_residual_zero (x : C0Seq) (u : L1Seq)
     simp [ZeroAtInftyContinuousMap.smul_apply, axisDirection_apply]
   · simp [ZeroAtInftyContinuousMap.smul_apply, axisDirection_apply, hi, h i hi]
 
+/-- Polar compatibility bounds the amplified detector reading uniformly. -/
+theorem seedPoint_polar_scaled_pairing_le (w : C0Seq × L1Seq)
+    (hw : ∀ n, 0 ≤ C0Seq.quadraticPairing (w - (seedPoint n : C0Seq × L1Seq)))
+    (n : ℕ) :
+    (n + 1 : ℝ) * seedSign n * C0Seq.symmetricForm w
+      (unitDifferenceDetector axisDirection (seedCoordinate n) (seedDetectorIndex n)) ≤
+      C0Seq.quadraticPairing w + 3 + (21 / 2) * (‖w.1‖ + ‖w.2‖) := by
+  have hp := hw n
+  rw [C0Seq.quadraticPairing_sub] at hp
+  have he := (quadraticPairing_seedPoint_bounds n).2
+  have hb := seedPoint_base_pairing_bound w n
+  have hform : C0Seq.symmetricForm w (seedPoint n) =
+      C0Seq.symmetricForm w
+        (axisSeedBase (seedTime n • unitDifference 1 (seedBaseIndex n)) (seedTime n)) +
+      ((n + 1 : ℝ) * seedSign n) * C0Seq.symmetricForm w
+        (unitDifferenceDetector axisDirection (seedCoordinate n) (seedDetectorIndex n)) := by
+    unfold seedPoint
+    rw [coe_scaledDetector, map_add, map_smul]
+    rfl
+  rw [hform] at hp
+  have hlow := (abs_le.mp hb).1
+  linarith
+
+/-- Each signed residual coordinate of a point compatible with the scheduled
+seed points is nonpositive. -/
+theorem signed_residual_nonpos_of_seedPoint_polar (x : C0Seq) (u : L1Seq)
+    (hw : ∀ n, 0 ≤ C0Seq.quadraticPairing ((x, u) - (seedPoint n : C0Seq × L1Seq)))
+    (q : ℕ) (b : Bool) :
+    (if b then (1 : ℝ) else -1) * (x + L1Seq.positiveOperator u) (offAxisCoordinate q) ≤ 0 := by
+  by_contra hnot
+  have hpos := lt_of_not_ge hnot
+  let f := seedSchedule.occurrence (q, b)
+  let σ : ℝ := if b then 1 else -1
+  let α : ℝ := σ * (x + L1Seq.positiveOperator u) (offAxisCoordinate q)
+  have hα : 0 < α := hpos
+  have hhalf : α / 2 < α := by linarith
+  have hlim := (seedDetector_pairing_tendsto x u q b).const_mul σ
+  have hlarge : ∀ᶠ k in atTop, α / 2 < σ * C0Seq.symmetricForm (x, u)
+      (unitDifferenceDetector axisDirection (seedCoordinate (f k)) (seedDetectorIndex (f k))) :=
+    hlim.eventually (lt_mem_nhds hhalf)
+  let K := C0Seq.quadraticPairing (x, u) + 3 + (21 / 2) * (‖x‖ + ‖u‖)
+  obtain ⟨N, hN⟩ := exists_nat_gt (max 0 (K / (α / 2)))
+  have hf := (seedSchedule.strictMono_occurrence (q, b)).tendsto_atTop
+  have hindex : ∀ᶠ k in atTop, N ≤ f k := hf.eventually (eventually_ge_atTop N)
+  obtain ⟨k, hk, hki⟩ := (hlarge.and hindex).exists
+  have hcast : (N : ℝ) ≤ f k := by exact_mod_cast hki
+  have hden : 0 < α / 2 := half_pos hα
+  have hthreshold : K / (α / 2) < (f k + 1 : ℝ) := by
+    have hm := le_max_right (0 : ℝ) (K / (α / 2))
+    linarith
+  have hK := (div_lt_iff₀ hden).mp hthreshold
+  have hs : seedSign (f k) = σ := by
+    unfold seedSign f
+    rw [seedSchedule.apply_occurrence]
+  have hbound := seedPoint_polar_scaled_pairing_le (x, u) hw (f k)
+  rw [hs] at hbound
+  have hn : (0 : ℝ) < f k + 1 := by positivity
+  have hg := mul_lt_mul_of_pos_left hk hn
+  dsimp only [K] at hK
+  nlinarith
+
+/-- The monotone polar of the actual scheduled detector points lies in the
+axis carrier. -/
+theorem seedPoint_polar_subset_carrier :
+    C0Seq.monotonePolar (Set.range (fun n ↦ (seedPoint n : C0Seq × L1Seq))) ⊆
+      parametrizedSubspace axisDirection := by
+  rintro ⟨x, u⟩ hw
+  have hcompat : ∀ n, 0 ≤ C0Seq.quadraticPairing ((x, u) - (seedPoint n : C0Seq × L1Seq)) := by
+    intro n
+    exact (C0Seq.mem_monotonePolar _ _).mp hw _ ⟨n, rfl⟩
+  apply mem_axisCarrier_of_residual_zero x u
+  intro i hi
+  obtain ⟨q, hq⟩ := exists_offAxisCoordinate_eq i hi
+  have hp := signed_residual_nonpos_of_seedPoint_polar x u hcompat q true
+  have hn := signed_residual_nonpos_of_seedPoint_polar x u hcompat q false
+  simp only [Bool.false_eq_true, ↓reduceIte, one_mul, neg_one_mul, hq] at hp hn
+  linarith
+
+/-- Every set containing the actual scheduled points has its polar inside the
+axis carrier, in particular the full half-line and anchor seed. -/
+theorem polar_subset_axisCarrier_of_seedPoint_mem (S : Set (C0Seq × L1Seq))
+    (hS : ∀ n, (seedPoint n : C0Seq × L1Seq) ∈ S) :
+    C0Seq.monotonePolar S ⊆ parametrizedSubspace axisDirection := by
+  intro w hw
+  apply seedPoint_polar_subset_carrier
+  rw [C0Seq.mem_monotonePolar] at hw ⊢
+  rintro z ⟨n, rfl⟩
+  exact hw _ (hS n)
+
 end Lorentz
