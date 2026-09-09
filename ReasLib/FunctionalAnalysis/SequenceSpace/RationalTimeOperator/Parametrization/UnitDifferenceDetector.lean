@@ -6,6 +6,7 @@ Authors: Zichen Wang
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzCoordinates
+public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.Pairing
 public import ReasLib.MeasureTheory.UnitL2.IntervalCoordinateOperator
 
 /-!
@@ -13,6 +14,8 @@ public import ReasLib.MeasureTheory.UnitL2.IntervalCoordinateOperator
 -/
 
 public section
+
+open scoped InnerProductSpace
 
 namespace Lorentz
 
@@ -55,5 +58,19 @@ theorem intervalCoordinate_unitDifference (i j : ℕ) :
   unfold unitDifference
   rw [map_sub, L1Seq.intervalCoordinateOperator_apply_single,
     L1Seq.intervalCoordinateOperator_apply_single]
+
+/-- The symmetric pairing with a unit-difference detector is given by the
+detector pairing formula, with no remote-copy approximation involved. -/
+theorem symmetricForm_unitDifferenceDetector
+    (d x : C0Seq) (u : L1Seq) (i j : ℕ)
+    (hpair : C0Seq.pairingL d (unitDifference i j) = 0) :
+    C0Seq.symmetricForm (x, u) (unitDifferenceDetector d i j) =
+      C0Seq.pairingL (x + L1Seq.positiveOperator u) (unitDifference i j) -
+        2 * ⟪L1Seq.intervalCoordinateOperator u,
+          L1Seq.intervalCoordinateOperator (unitDifference i j)⟫_ℝ -
+        C0Seq.pairingL d u * C0Seq.pairingL d (unitDifference i j) := by
+  unfold unitDifferenceDetector
+  rw [parametrizedPoint_apply]
+  simpa [hpair] using (detectorPairingFormula d x u (unitDifference i j))
 
 end Lorentz
