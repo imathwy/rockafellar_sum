@@ -7,6 +7,7 @@ module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzCoordinates
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.Pairing
+public import ReasLib.Topology.RationalTime
 public import ReasLib.MeasureTheory.UnitL2.IntervalCoordinateOperator
 
 /-!
@@ -15,6 +16,7 @@ public import ReasLib.MeasureTheory.UnitL2.IntervalCoordinateOperator
 
 public section
 
+open Topology
 open scoped InnerProductSpace
 
 namespace Lorentz
@@ -70,6 +72,31 @@ theorem norm_intervalCoordinate_unitDifference (i j : ℕ) :
         (rationalTime_mem_Ioo i).2.le⟩ : unitInterval)
       (⟨rationalTime j, (rationalTime_mem_Ioo j).1.le,
         (rationalTime_mem_Ioo j).2.le⟩ : unitInterval))
+
+/-- A strictly increasing rational-time subsequence approaching the `i`th time
+produces unit-difference detectors whose interval coordinates vanish. -/
+theorem tendsto_norm_intervalCoordinate_unitDifference
+    (i : ℕ) {φ : ℕ → ℕ}
+    (hφ : Filter.Tendsto (rationalTime ∘ φ) Filter.atTop
+      (𝓝 (rationalTime i))) :
+    Filter.Tendsto
+      (fun n ↦ ‖L1Seq.intervalCoordinateOperator
+        (unitDifference i (φ n))‖)
+      Filter.atTop (𝓝 0) := by
+  have hdiff : Filter.Tendsto
+      (fun n ↦ |rationalTime i - rationalTime (φ n)|)
+      Filter.atTop (𝓝 0) := by
+    have hsub : Filter.Tendsto
+        (fun n ↦ rationalTime i - rationalTime (φ n))
+        Filter.atTop (𝓝 0) := by
+      have hconst : Filter.Tendsto (fun _ : ℕ ↦ rationalTime i)
+          Filter.atTop (𝓝 (rationalTime i)) := tendsto_const_nhds
+      simpa only [Function.comp_apply, sub_self] using
+        (hconst.sub hφ)
+    simpa only [abs_zero] using hsub.abs
+  have hsqrt := Real.continuous_sqrt.continuousAt.tendsto.comp hdiff
+  simpa only [norm_intervalCoordinate_unitDifference, Real.sqrt_zero,
+    Function.comp_def] using hsqrt
 
 /-- Under the annihilation condition, the detector norm is exactly the
 interval-coordinate difference norm. -/
