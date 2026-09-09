@@ -172,4 +172,70 @@ theorem norm_negativeCoordinate_seedPoint_lt (n : ℕ) :
   exact (norm_add_le _ _).trans_lt (lt_of_lt_of_le (add_lt_add hb hh)
     (by linarith))
 
+/-- The positive times stay between one and three halves. -/
+theorem seedTime_bounds (n : ℕ) : 1 < seedTime n ∧ seedTime n ≤ 3 / 2 := by
+  have hp : 0 < (1 / 2 : ℝ) ^ (n + 1) := by positivity
+  have hb : (1 / 2 : ℝ) ^ n ≤ 1 := pow_le_one₀ (by norm_num) (by norm_num)
+  unfold seedTime
+  rw [pow_succ] at hp ⊢
+  constructor
+  · linarith
+  · linarith
+
+/-- The perturbation radii are uniformly less than one. -/
+theorem seedRadius_lt_one (n : ℕ) : seedRadius n < 1 := by
+  unfold seedRadius
+  have hb : (1 / 2 : ℝ) ^ n ≤ 1 := pow_le_one₀ (by norm_num) (by norm_num)
+  rw [pow_add]
+  norm_num
+  linarith
+
+/-- The actual seed point energies are positive and uniformly bounded by three. -/
+theorem quadraticPairing_seedPoint_bounds (n : ℕ) :
+    0 < C0Seq.quadraticPairing (seedPoint n) ∧
+      C0Seq.quadraticPairing (seedPoint n) < 3 := by
+  rw [quadraticIdentity axisDirection seed_axis_ne_zero, positiveCoordinate_seedPoint]
+  have ht := seedTime_bounds n
+  have hn := norm_negativeCoordinate_seedPoint_lt n
+  have hρ := seedRadius_lt_one n
+  have hnonneg := norm_nonneg (negativeCoordinate axisDirection seed_axis_ne_zero (seedPoint n))
+  constructor
+  · nlinarith
+  · nlinarith [sq_nonneg ‖negativeCoordinate axisDirection seed_axis_ne_zero (seedPoint n)‖]
+
+/-- The geometric error scale tends to zero. -/
+theorem seedRadius_tendsto_zero : Tendsto seedRadius atTop (𝓝 0) := by
+  have hhalf : (0 : ℝ) ≤ 1 / 2 := by norm_num
+  have hlt : (1 / 2 : ℝ) < 1 := by norm_num
+  have h := (tendsto_pow_atTop_nhds_zero_of_lt_one hhalf hlt).comp
+    (tendsto_add_atTop_nat 7)
+  exact h
+
+/-- The positive times accumulate at one. -/
+theorem seedTime_tendsto_one : Tendsto seedTime atTop (𝓝 1) := by
+  unfold seedTime
+  have hhalf : (0 : ℝ) ≤ 1 / 2 := by norm_num
+  have hlt : (1 / 2 : ℝ) < 1 := by norm_num
+  have h := (tendsto_pow_atTop_nhds_zero_of_lt_one hhalf hlt).comp
+    (tendsto_add_atTop_nat 1)
+  have hc : Tendsto (fun _ : ℕ ↦ (1 : ℝ)) atTop (𝓝 1) := tendsto_const_nhds
+  simpa only [add_zero, Function.comp_apply] using hc.add h
+
+/-- The actual seed points converge to zero in their negative coordinates. -/
+theorem negativeCoordinate_seedPoint_tendsto_zero :
+    Tendsto (fun n ↦ negativeCoordinate axisDirection seed_axis_ne_zero (seedPoint n))
+      atTop (𝓝 0) := by
+  apply tendsto_zero_iff_norm_tendsto_zero.mpr
+  exact squeeze_zero (fun n ↦ norm_nonneg _)
+    (fun n ↦ (norm_negativeCoordinate_seedPoint_lt n).le) seedRadius_tendsto_zero
+
+/-- The bounded bases of the actual scheduled points have a uniform pairing bound. -/
+theorem seedPoint_base_pairing_bound (w : C0Seq × L1Seq) (n : ℕ) :
+    |C0Seq.symmetricForm w
+      (axisSeedBase (seedTime n • unitDifference 1 (seedBaseIndex n)) (seedTime n))| ≤
+        (21 / 2) * (‖w.1‖ + ‖w.2‖) := by
+  apply abs_symmetricForm_axisSeedBase_le w _ (seedBaseIndex_ne_one n)
+  rw [abs_of_pos (seedTime_pos n)]
+  exact (seedTime_bounds n).2
+
 end Lorentz
