@@ -68,7 +68,7 @@ theorem quadraticPairing_scaledDetector_zeroPositive
         2 * r * ⟪negativeCoordinate d hd ξ,
           negativeCoordinate d hd h⟫_ℝ +
         r ^ 2 * C0Seq.quadraticPairing h := by
-  rw [quadraticPairing_scaledDetector_expansion d hd ξ h r, hP]
+  rw [quadraticPairing_scaledDetector_expansion hd ξ h r, hP]
   ring
 
 end Lorentz
