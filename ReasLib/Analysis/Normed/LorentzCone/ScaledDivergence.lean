@@ -18,7 +18,7 @@ namespace Lorentz
 /-- A nonpositive detector energy and a positive linear pairing force the
 scaled Lorentz energy below a linear negative bound. -/
 theorem energy_scaled_le_of_nonpos_direction
-    {q c e r η : ℝ} (hr : 0 ≤ r) (he : e ≤ 0) (hc : η ≤ c) (hη : 0 ≤ η) :
+    {q c e r η : ℝ} (hr : 0 ≤ r) (he : e ≤ 0) (hc : η ≤ c) :
     q - 2 * r * c + r ^ 2 * e ≤ q - 2 * r * η := by
   have hrc : 2 * r * η ≤ 2 * r * c := by
     nlinarith
