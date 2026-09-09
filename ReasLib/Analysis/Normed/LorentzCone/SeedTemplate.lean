@@ -86,4 +86,13 @@ theorem energy_add_smul_expansion {H : Type u}
   rw [mul_pow, sq_abs]
   ring
 
+/-- The norm of a Hilbert product point with zero scalar component is the norm
+of its Hilbert component. -/
+theorem norm_hilbertProd_mk_zero {H : Type u}
+    [NormedAddCommGroup H] [InnerProductSpace ℝ H] (v : H) :
+    ‖HilbertProd2.mk v 0‖ = ‖v‖ := by
+  have hsq : ‖HilbertProd2.mk v 0‖ ^ 2 = ‖v‖ ^ 2 := by
+    simpa using (HilbertProd2.norm_mk_sq v (0 : ℝ))
+  exact (sq_eq_sq₀ (norm_nonneg _) (norm_nonneg _)).mp hsq
+
 end Lorentz
