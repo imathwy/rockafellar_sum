@@ -13,10 +13,8 @@ public import ReasLib.Analysis.InnerProductSpace.HilbertProd2
 public import ReasLib.Analysis.Normed.LorentzCone
 public import ReasLib.Analysis.Normed.LorentzCone.HilbertProd2
 public import ReasLib.Analysis.Normed.LorentzCone.SeedTemplate
-public import ReasLib.Analysis.Normed.Operator.Bilinear
 public import ReasLib.Analysis.Sequence.L1
 public import ReasLib.Analysis.Sequence.L1Synthesis
-public import ReasLib.Analysis.Sequence.L1Synthesis.Transpose
 public import ReasLib.Analysis.SetValuedOperator
 public import ReasLib.Data.Countable.RepeatingSchedule
 public import ReasLib.FunctionalAnalysis.DualPairing

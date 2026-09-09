@@ -39,16 +39,6 @@ theorem sameP_quadraticPairing (d : C0Seq) (hd : d ≠ 0)
   -- Linearity normalizes the remaining negative-coordinate difference.
   norm_num
 
-/-- The quadratic pairing of the difference of two parametrized points with
-the same positive coordinate is nonpositive. -/
-theorem sameP_quadraticPairing_nonpos (d : C0Seq) (hd : d ≠ 0)
-    (w mP : parametrizedSubspace d)
-    (hP : positiveCoordinate d hd w = positiveCoordinate d hd mP) :
-    C0Seq.quadraticPairing (w - mP) ≤ 0 := by
-  -- Rewrite as the negative of a square, which is necessarily nonpositive.
-  rw [sameP_quadraticPairing d hd w mP hP]
-  exact neg_nonpos.mpr (sq_nonneg _)
-
 /-- If two parametrized points have the same positive coordinate and the
 quadratic pairing of their difference is nonnegative, then their negative
 coordinates coincide. -/

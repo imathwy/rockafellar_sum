@@ -66,15 +66,4 @@ theorem eq_zero_of_negativeCoordinate_eq_zero (d : C0Seq) (hd : d ≠ 0)
   rw [parametrizedPoint_apply, parametrization_apply]
   simp
 
-/-- If the negative coordinate of a point in `parametrizedSubspace d` vanishes,
-then its positive coordinate vanishes as well. -/
-theorem positiveCoordinate_eq_zero_of_negativeCoordinate_eq_zero (d : C0Seq)
-    (hd : d ≠ 0) (z : parametrizedSubspace d)
-    (hN : negativeCoordinate d hd z = 0) :
-    positiveCoordinate d hd z = 0 := by
-  -- Reduce to the zero subspace element, then use linearity of the positive coordinate.
-  have hz := eq_zero_of_negativeCoordinate_eq_zero d hd z hN
-  rw [hz]
-  exact map_zero _
-
 end Lorentz

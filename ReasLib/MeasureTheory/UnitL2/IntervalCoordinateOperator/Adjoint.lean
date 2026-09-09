@@ -5,7 +5,8 @@ Authors: Zichen Wang
 -/
 module
 
-public import ReasLib.Analysis.Sequence.L1Synthesis.Transpose
+public import Mathlib.Analysis.InnerProductSpace.Dual
+public import ReasLib.FunctionalAnalysis.SequenceSpace.L1.Transpose
 public import ReasLib.MeasureTheory.UnitL2.IntervalCoordinateOperator
 
 /-!

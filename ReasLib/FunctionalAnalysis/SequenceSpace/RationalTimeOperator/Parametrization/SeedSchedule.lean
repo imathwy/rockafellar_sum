@@ -125,12 +125,6 @@ noncomputable def seedPoint (n : ℕ) : parametrizedSubspace axisDirection :=
     (unitDifferenceDetector axisDirection (seedCoordinate n) (seedDetectorIndex n))
     ((n + 1 : ℝ) * seedSign n)
 
-/-- The distinguished coordinate axis is nonzero. -/
-theorem seed_axis_ne_zero : axisDirection ≠ 0 := by
-  intro h
-  have he := congrArg (fun x : C0Seq ↦ x 1) h
-  simp [axisDirection_apply] at he
-
 /-- The selected base index is outside the distinguished coordinate. -/
 theorem seedBaseIndex_ne_one (n : ℕ) : seedBaseIndex n ≠ 1 := by
   have h := (seed_indices_spec n).1

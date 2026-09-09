@@ -41,18 +41,18 @@ theorem negativeCoordinate_seedBase {d : C0Seq} (hd : d ≠ 0)
   unfold seedBase
   exact negativeCoordinate_adjustedParameter d hd a s
 
-/-- The seed base at a zero source sequence is the positive axis point. -/
-theorem seedBase_zero (d : C0Seq) (s : ℝ) :
-    seedBase (0 : L1Seq) s = parametrizedPoint d 0 (2 * s) := by
-  unfold seedBase
-  simp
-
 /-- The canonical first-axis direction used by the S3 construction. -/
 def axisDirection : C0Seq := c0Single 1 1
 
 /-- The distinguished axis reads one at coordinate one and zero elsewhere. -/
 theorem axisDirection_apply (n : ℕ) : axisDirection n = if n = 1 then 1 else 0 := by
   exact c0Single_apply 1 1 n
+
+/-- The distinguished coordinate axis is nonzero. -/
+theorem seed_axis_ne_zero : axisDirection ≠ 0 := by
+  intro h
+  have he := congrArg (fun x : C0Seq ↦ x 1) h
+  simp [axisDirection_apply] at he
 
 /-- The axis direction pairs with a unit difference at coordinate `1` as one
 when the second coordinate is distinct. -/
@@ -75,10 +75,7 @@ theorem positiveCoordinate_axisSeedBase (hd : axisDirection ≠ 0) (a : L1Seq) (
 has vanishing scalar negative coordinate. -/
 theorem negativeCoordinate_axisSeedBase
     (r : ℕ) (hr : r ≠ 1) (s : ℝ) :
-    negativeCoordinate axisDirection (by
-      intro h
-      have h₁ := congrArg (fun x : C0Seq ↦ x 1) h
-      simp [axisDirection, c0Single_apply] at h₁)
+    negativeCoordinate axisDirection seed_axis_ne_zero
         (axisSeedBase (s • unitDifference 1 r) s) =
       HilbertProd2.mk
         (L1Seq.intervalCoordinateOperator (s • unitDifference 1 r)) 0 := by
@@ -91,10 +88,7 @@ theorem negativeCoordinate_axisSeedBase
 corresponding rational-time interval distance. -/
 theorem norm_negativeCoordinate_axisSeedBase
     (r : ℕ) (hr : r ≠ 1) (s : ℝ) :
-    ‖negativeCoordinate axisDirection (by
-      intro h
-      have h₁ := congrArg (fun x : C0Seq ↦ x 1) h
-      simp [axisDirection, c0Single_apply] at h₁)
+    ‖negativeCoordinate axisDirection seed_axis_ne_zero
         (axisSeedBase (s • unitDifference 1 r) s)‖ =
       |s| * Real.sqrt |rationalTime 1 - rationalTime r| := by
   rw [negativeCoordinate_axisSeedBase r hr s]

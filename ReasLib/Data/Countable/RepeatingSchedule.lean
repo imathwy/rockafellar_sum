@@ -68,14 +68,6 @@ theorem infinite_fiber {α : Type u} (r : RepeatingSchedule α) (a : α) :
   rintro n ⟨k, rfl⟩
   exact r.apply_occurrence a k
 
-/-- Every value in a repeating schedule occurs after every prescribed index. -/
-theorem exists_occurrence_gt {α : Type u} (r : RepeatingSchedule α) (a : α) (N : ℕ) :
-    ∃ n, N < n ∧ r.toFun n = a := by
-  -- An infinite fiber contains an index outside the finite initial segment through `N`.
-  obtain ⟨n, hn, hnle⟩ := (r.infinite_fiber a).exists_notMem_finite (Set.finite_le_nat N)
-  -- Nonmembership in that segment says precisely that the chosen occurrence is later.
-  exact ⟨n, lt_of_not_ge hnle, hn⟩
-
 /-- Construct a repeating schedule on any nonempty countable type. -/
 noncomputable def ofCountable (α : Type u) [Countable α] [Nonempty α] : RepeatingSchedule α :=
   ofSurjective (exists_surjective_nat α).choose (exists_surjective_nat α).choose_spec

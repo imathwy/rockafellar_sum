@@ -102,34 +102,3 @@ public theorem exists_strictMono_rationalTime_tendsto (t : ℝ)
     exact coe_unitIntervalRationalTime (φ n)
   rw [← hCoeComp]
   exact hProjected
-
-/-- A real-valued function continuous on the unit interval and converging to
-zero along the canonical rational-time sequence vanishes on the interval. -/
-public theorem continuousOn_eq_zero_of_tendsto_rationalTime (G : ℝ → ℝ)
-    (h_cont : ContinuousOn G (Set.Icc (0 : ℝ) 1))
-    (h_samples : Filter.Tendsto (fun n : ℕ ↦ G (rationalTime n))
-      Filter.atTop (𝓝 0)) :
-    ∀ t ∈ Set.Icc (0 : ℝ) 1, G t = 0 := by
-  intro t ht
-  -- Select a tail subsequence of rational times converging to the prescribed point.
-  obtain ⟨φ, hφmono, hφlim⟩ := exists_strictMono_rationalTime_tendsto t ht
-  have hφmem :
-      ∀ᶠ k in Filter.atTop, (rationalTime ∘ φ) k ∈ Set.Icc (0 : ℝ) 1 :=
-    Filter.Eventually.of_forall fun k ↦
-      Set.Ioo_subset_Icc_self (rationalTime_mem_Ioo (φ k))
-  have hSubsequenceWithin :
-      Filter.Tendsto (rationalTime ∘ φ) Filter.atTop
-        (𝓝[Set.Icc (0 : ℝ) 1] t) :=
-    tendsto_nhdsWithin_of_tendsto_nhds_of_eventually_within
-      (rationalTime ∘ φ) hφlim hφmem
-  -- Continuity and convergence of the full sample sequence give the two subsequential limits.
-  have hContinuousSubsequence :
-      Filter.Tendsto (fun k ↦ G (rationalTime (φ k))) Filter.atTop (𝓝 (G t)) := by
-    simpa only [Function.comp_def] using
-      Filter.Tendsto.comp (h_cont t ht) hSubsequenceWithin
-  have hZeroSubsequence :
-      Filter.Tendsto (fun k ↦ G (rationalTime (φ k))) Filter.atTop (𝓝 0) := by
-    simpa only [Function.comp_def] using
-      Filter.Tendsto.comp h_samples hφmono.tendsto_atTop
-  -- Hausdorff uniqueness identifies the two limits of the common subsequence.
-  exact tendsto_nhds_unique hContinuousSubsequence hZeroSubsequence

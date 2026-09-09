@@ -5,7 +5,6 @@ Authors: Zichen Wang
 -/
 module
 
-public import ReasLib.Analysis.Normed.Operator.Bilinear
 public import ReasLib.FunctionalAnalysis.SequenceSpace.C0.Transpose
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Bilinear
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.QuadraticIdentity
@@ -80,17 +79,5 @@ public theorem two_smul_intervalCoordinateAdjoint_eq_pairingL (b : L1Seq) (x : C
   rw [h_transpose] at h_sym_b'
   rw [C0Seq.pairingL.map_add]
   simpa only [two_nsmul] using h_sym_b'.symm
-
-/-- Membership of the reindexed transpose in the canonical image implies membership of
-the corresponding symmetric-part value in that image. -/
-public theorem two_smul_intervalCoordinateAdjoint_mem_range (b : L1Seq)
-    (h_transpose : positiveOperator.reindexedTranspose b ∈ Set.range C0Seq.pairingL) :
-    2 • intervalCoordinateAdjoint (intervalCoordinateOperator b) ∈
-      Set.range C0Seq.pairingL := by
-  -- Unpack the range hypothesis to obtain a canonical representative of the transpose value.
-  rcases h_transpose with ⟨x, hx⟩
-  -- The preceding equality supplies the required range witness, with both equalities reversed.
-  refine ⟨positiveOperator b + x, ?_⟩
-  exact (two_smul_intervalCoordinateAdjoint_eq_pairingL b x hx.symm).symm
 
 end L1Seq
