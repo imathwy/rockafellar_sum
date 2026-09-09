@@ -10,6 +10,6 @@ public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Para
 /-!
 # S3 seed formalization
 
-The final result is `Lorentz.exists_seedCounterexample`, using the closed
-primal ball of radius twelve.
+The construction-free final result is `C0Seq.exists_maximalMonotone_sum_not_maximal`.
+`Lorentz.exists_seedCounterexample` retains the radius-twelve normal-cone witness.
 -/

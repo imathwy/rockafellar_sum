@@ -91,3 +91,41 @@ theorem exists_seedCounterexample : ∃ M : SetValuedOperator C0Seq L1Seq,
     exact hnot hpolar
 
 end Lorentz
+
+namespace C0Seq
+
+/-- Two maximally monotone operators on real `c₀` satisfy the interior-domain
+constraint qualification but their pointwise sum is not maximally monotone. -/
+theorem exists_maximalMonotone_sum_not_maximal :
+    ∃ A B : SetValuedOperator C0Seq L1Seq,
+      Maximal coordinateDualPairing.IsMonotone A.graph ∧
+      Maximal coordinateDualPairing.IsMonotone B.graph ∧
+      (A.dom ∩ interior B.dom).Nonempty ∧
+      ¬ Maximal coordinateDualPairing.IsMonotone (A + B).graph := by
+  obtain ⟨A, hA, hB, hdom, hsum⟩ := Lorentz.exists_seedCounterexample
+  let B := coordinateDualPairing.normalCone (Metric.closedBall (0 : C0Seq) 12)
+  have hgraph : B.graph = coordinateDualPairing.normalConeGraph
+      (Metric.closedBall (0 : C0Seq) 12) := by
+    ext z
+    rcases z with ⟨x, u⟩
+    rw [SetValuedOperator.mem_graph, coordinateDualPairing.mem_graph_normalCone]
+    exact coordinateDualPairing.mem_normalCone _ x u
+  have hBdom : B.dom = Metric.closedBall (0 : C0Seq) 12 := by
+    ext x
+    rw [SetValuedOperator.mem_dom]
+    constructor
+    · rintro ⟨u, hu⟩
+      exact (coordinateDualPairing.mem_normalCone _ x u).mp hu |>.1
+    · intro hx
+      refine ⟨0, ?_⟩
+      rw [coordinateDualPairing.mem_normalCone]
+      refine ⟨hx, ?_⟩
+      intro y hy
+      simp
+  refine ⟨A, B, hA, ?_, ?_, hsum⟩
+  · rw [hgraph]
+    exact hB
+  · rw [hBdom]
+    exact hdom
+
+end C0Seq

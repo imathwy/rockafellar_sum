@@ -6,8 +6,6 @@ Authors: Zichen Wang
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzCoordinates
-public import ReasLib.Analysis.Normed.LorentzCone.SeedTemplate
-public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzEnergy
 
 /-!
 # Scaled detector combinations
@@ -15,7 +13,6 @@ public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Para
 
 public section
 
-open scoped InnerProductSpace
 
 namespace Lorentz
 
@@ -47,34 +44,5 @@ theorem negativeCoordinate_scaledDetector {d : C0Seq} (hd : d ≠ 0)
       negativeCoordinate d hd ξ + r • negativeCoordinate d hd h := by
   unfold scaledDetector
   rw [map_add, map_smul]
-
-/-- The quadratic pairing of a scaled detector combination has the intrinsic
-Lorentz energy expansion. -/
-theorem quadraticPairing_scaledDetector_expansion {d : C0Seq} (hd : d ≠ 0)
-    (ξ h : parametrizedSubspace d) (r : ℝ) :
-    C0Seq.quadraticPairing (scaledDetector ξ h r) =
-      C0Seq.quadraticPairing ξ +
-        2 * r * (positiveCoordinate d hd ξ * positiveCoordinate d hd h -
-          ⟪negativeCoordinate d hd ξ, negativeCoordinate d hd h⟫_ℝ) +
-        r ^ 2 * C0Seq.quadraticPairing h := by
-  rw [quadraticIdentity d hd]
-  rw [positiveCoordinate_scaledDetector, negativeCoordinate_scaledDetector]
-  rw [quadraticIdentity d hd ξ, quadraticIdentity d hd h]
-  exact energy_add_smul_expansion
-    (positiveCoordinate d hd ξ, negativeCoordinate d hd ξ)
-    (positiveCoordinate d hd h, negativeCoordinate d hd h) r
-
-/-- The scaled energy formula simplifies when the detector direction has zero
-positive Lorentz coordinate. -/
-theorem quadraticPairing_scaledDetector_zeroPositive
-    {d : C0Seq} (hd : d ≠ 0) (ξ h : parametrizedSubspace d) (r : ℝ)
-    (hP : positiveCoordinate d hd h = 0) :
-    C0Seq.quadraticPairing (scaledDetector ξ h r) =
-      C0Seq.quadraticPairing ξ -
-        2 * r * ⟪negativeCoordinate d hd ξ,
-          negativeCoordinate d hd h⟫_ℝ +
-        r ^ 2 * C0Seq.quadraticPairing h := by
-  rw [quadraticPairing_scaledDetector_expansion hd ξ h r, hP]
-  ring
 
 end Lorentz
