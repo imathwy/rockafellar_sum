@@ -6,6 +6,8 @@ Authors: Zichen Wang
 module
 
 public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.SeedComparisons
+public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.SamePositiveCoordinate
+public import ReasLib.FunctionalAnalysis.SequenceSpace.RationalTimeOperator.Parametrization.LorentzCoordinates.Kernel
 
 /-!
 # Assembly of the S3 monotone seed
@@ -119,6 +121,89 @@ theorem seedPoint_polar_energy_lower_bound (w : parametrizedSubspace axisDirecti
   have hlim := le_of_tendsto_of_tendsto' hN hP hineq
   simp only [sub_zero] at hlim
   rw [quadraticIdentity axisDirection seed_axis_ne_zero]
+  nlinarith
+
+/-- A polar point with positive coordinate at most one half lies on the seed
+half-line, by comparison with the point of the same positive coordinate. -/
+theorem assembledSeed_polar_left_rigidity (z v w : parametrizedSubspace axisDirection)
+    (hzP : positiveCoordinate axisDirection seed_axis_ne_zero z = 0)
+    (hvP : positiveCoordinate axisDirection seed_axis_ne_zero v = 1)
+    (hw : (w : C0Seq × L1Seq) ∈ C0Seq.monotonePolar (assembledSeed z v))
+    (hp : positiveCoordinate axisDirection seed_axis_ne_zero w ≤ 1 / 2) :
+    w = z + positiveCoordinate axisDirection seed_axis_ne_zero w • v := by
+  let p := positiveCoordinate axisDirection seed_axis_ne_zero w
+  have hmem : ((z + p • v : parametrizedSubspace axisDirection) : C0Seq × L1Seq) ∈
+      assembledSeed z v := Or.inl ⟨p, hp, rfl⟩
+  have hquad := (C0Seq.mem_monotonePolar _ _).mp hw _ hmem
+  have hsame : positiveCoordinate axisDirection seed_axis_ne_zero w =
+      positiveCoordinate axisDirection seed_axis_ne_zero (z + p • v) := by
+    rw [map_add, map_smul, hzP, hvP]
+    simp only [smul_eq_mul, mul_one, zero_add, p]
+  have hN := sameP_rigidity axisDirection seed_axis_ne_zero w (z + p • v) hsame hquad
+  have hzero : negativeCoordinate axisDirection seed_axis_ne_zero (w - (z + p • v)) = 0 := by
+    rw [map_sub, hN, sub_self]
+  exact sub_eq_zero.mp (eq_zero_of_negativeCoordinate_eq_zero _ _ _ hzero)
+
+/-- Negative energy on the seed half-line confines its scalar parameter to
+the source interval of radius one sixty-third. -/
+theorem seed_halfLine_negative_parameter_bound (z v : parametrizedSubspace axisDirection)
+    (hzP : positiveCoordinate axisDirection seed_axis_ne_zero z = 0)
+    (hvP : positiveCoordinate axisDirection seed_axis_ne_zero v = 1)
+    (hzN : ‖negativeCoordinate axisDirection seed_axis_ne_zero z‖ ≤ 1 / 64)
+    (hvN : ‖negativeCoordinate axisDirection seed_axis_ne_zero v‖ ≤ 1 / 64)
+    (p : ℝ) (hneg : C0Seq.quadraticPairing
+      (z + p • v : parametrizedSubspace axisDirection) < 0) : |p| < 1 / 63 := by
+  rw [quadraticIdentity axisDirection seed_axis_ne_zero, map_add, map_smul, hzP, hvP] at hneg
+  simp only [smul_eq_mul, mul_one, zero_add] at hneg
+  have hsq : p ^ 2 < ‖negativeCoordinate axisDirection seed_axis_ne_zero (z + p • v)‖ ^ 2 := by
+    linarith
+  have hab : |p| < ‖negativeCoordinate axisDirection seed_axis_ne_zero (z + p • v)‖ := by
+    have hs : |p| ^ 2 < ‖negativeCoordinate axisDirection seed_axis_ne_zero (z + p • v)‖ ^ 2 := by
+      simpa only [sq_abs] using hsq
+    exact (sq_lt_sq₀ (abs_nonneg _) (norm_nonneg _)).mp hs
+  rw [map_add, map_smul] at hab
+  have ht := norm_add_le (negativeCoordinate axisDirection seed_axis_ne_zero z)
+    (p • negativeCoordinate axisDirection seed_axis_ne_zero v)
+  rw [norm_smul, Real.norm_eq_abs] at ht
+  have hm := mul_le_mul_of_nonneg_left hvN (abs_nonneg p)
+  nlinarith
+
+/-- The source primal separation and small Lorentz bounds force local
+nonnegative energy throughout the full seed polar. -/
+theorem assembledSeed_polar_local_nonneg (z v : parametrizedSubspace axisDirection)
+    (hzP : positiveCoordinate axisDirection seed_axis_ne_zero z = 0)
+    (hvP : positiveCoordinate axisDirection seed_axis_ne_zero v = 1)
+    (hzN : ‖negativeCoordinate axisDirection seed_axis_ne_zero z‖ ≤ 1 / 64)
+    (hvN : ‖negativeCoordinate axisDirection seed_axis_ne_zero v‖ ≤ 1 / 64)
+    (hzX : 64 ≤ ‖(z : C0Seq × L1Seq).1‖)
+    (hvX : ‖(v : C0Seq × L1Seq).1‖ ≤ 5)
+    (w : C0Seq × L1Seq) (hw : w ∈ C0Seq.monotonePolar (assembledSeed z v))
+    (hx : ‖w.1‖ < 16) : 0 ≤ C0Seq.quadraticPairing w := by
+  let wC : parametrizedSubspace axisDirection := ⟨w, assembledSeed_polar_subset_carrier z v hw⟩
+  have hcompat (n : ℕ) : 0 ≤ C0Seq.quadraticPairing
+      (w - (seedPoint n : C0Seq × L1Seq)) :=
+    (C0Seq.mem_monotonePolar _ _).mp hw _ (Or.inr (Or.inl ⟨n, rfl⟩))
+  have henergy := seedPoint_polar_energy_lower_bound wC hcompat
+  by_contra hnot
+  have hneg : C0Seq.quadraticPairing w < 0 := lt_of_not_ge hnot
+  have hp : positiveCoordinate axisDirection seed_axis_ne_zero wC ≤ 1 / 2 := by
+    change 2 * positiveCoordinate axisDirection seed_axis_ne_zero wC - 1 ≤
+      C0Seq.quadraticPairing w at henergy
+    linarith
+  have heq := assembledSeed_polar_left_rigidity z v wC hzP hvP hw hp
+  let p := positiveCoordinate axisDirection seed_axis_ne_zero wC
+  have hn : C0Seq.quadraticPairing (z + p • v : parametrizedSubspace axisDirection) < 0 := by
+    rw [← heq]
+    exact hneg
+  have hab := seed_halfLine_negative_parameter_bound z v hzP hvP hzN hvN p hn
+  have heqX : w.1 = (z : C0Seq × L1Seq).1 + p • (v : C0Seq × L1Seq).1 :=
+    congrArg (fun a : parametrizedSubspace axisDirection ↦ (a : C0Seq × L1Seq).1) heq
+  have ht := norm_sub_le w.1 (p • (v : C0Seq × L1Seq).1)
+  have hsub : w.1 - p • (v : C0Seq × L1Seq).1 = (z : C0Seq × L1Seq).1 := by
+    rw [heqX]
+    abel
+  rw [hsub, norm_smul, Real.norm_eq_abs] at ht
+  have hm := mul_le_mul_of_nonneg_left hvX (abs_nonneg p)
   nlinarith
 
 end Lorentz
