@@ -1,30 +1,53 @@
-# Rockafellar Sum Counterexample
+# Rockafellar Sum
 
 Lean 4 and mathlib formalization of the S3 Lorentz seed construction on real
 `c₀`, with the continuous dual represented by `ℓ¹`.
 
-`Lorentz.exists_seedCounterexample` constructs a maximally monotone operator
+## Main Theorem
+
+```lean
+C0Seq.exists_maximalMonotone_sum_not_maximal
+```
+
+Two maximally monotone operators satisfy the interior-domain condition, but
+their pointwise sum is not maximally monotone:
+
+```lean
+∃ A B : SetValuedOperator C0Seq L1Seq,
+  Maximal coordinateDualPairing.IsMonotone A.graph ∧
+  Maximal coordinateDualPairing.IsMonotone B.graph ∧
+  (A.dom ∩ interior B.dom).Nonempty ∧
+  ¬ Maximal coordinateDualPairing.IsMonotone (A + B).graph
+```
+
+The statement above is written inside `namespace C0Seq`.
+The construction theorem `Lorentz.exists_seedCounterexample` constructs a maximally monotone operator
 whose sum with the normal cone of the closed radius-12 ball is not maximally
 monotone, despite the interior-domain qualification. It uses an explicit
 monotone seed and a Zorn maximal extension.
 
 ## Entry Points
 
-- `S3.lean`: the seed proof and final theorem.
-- `ReasLib.lean`: the reusable library aggregate.
-- `rockafellar_sum.lean`: the project aggregate.
-- `ReasLib/FunctionalAnalysis/SequenceSpace/RationalTimeOperator/Parametrization/SeedCounterexample.lean`:
-  final normal-cone argument.
-- `SeedSchedule.lean` in the same directory: actual detector points, monotonicity,
-  and polar-carrier containment.
-- `SeedWitnesses.lean`: concrete witnesses and unconditional seed existence.
+- [S3.lean](S3.lean): the seed proof and final theorem.
+- [ReasLib.lean](ReasLib.lean): complete library import index.
+- [rockafellar_sum.lean](rockafellar_sum.lean): project entry point.
+
+## Proof Map
+
+| Stage | Source |
+| --- | --- |
+| Fixed detectors and polar containment | [SeedSchedule](ReasLib/FunctionalAnalysis/SequenceSpace/RationalTimeOperator/Parametrization/SeedSchedule.lean) |
+| Full seed monotonicity and local energy | [SeedAssembly](ReasLib/FunctionalAnalysis/SequenceSpace/RationalTimeOperator/Parametrization/SeedAssembly.lean) |
+| Concrete witnesses and maximal extension | [SeedWitnesses](ReasLib/FunctionalAnalysis/SequenceSpace/RationalTimeOperator/Parametrization/SeedWitnesses.lean) |
+| Normal-cone sum and final theorem | [SeedCounterexample](ReasLib/FunctionalAnalysis/SequenceSpace/RationalTimeOperator/Parametrization/SeedCounterexample.lean) |
 
 The former S2 wrappers and GhostCurve construction are removed from this branch;
 Git history retains the previous proof route. Shared analytic infrastructure remains.
 
 ## Verification
 
-The project pins Lean and mathlib v4.32.0. Run checks serially:
+Install [elan](https://github.com/leanprover/elan). The project pins Lean and
+mathlib v4.32.0; Lake resolves dependencies on the first run. Run checks serially:
 
 ```bash
 lake lean ReasLib.lean
@@ -32,7 +55,7 @@ lake lean S3.lean
 lake lean rockafellar_sum.lean
 ```
 
-CI checks these entry points and rejects proof placeholders. Comparator owns
+[CI](.github/workflows/lean_action_ci.yml) checks these entry points and rejects proof placeholders. Comparator owns
 separate declaration-identity checks; the removed CI audit tools are not restored.
 A local kernel audit of the final S3 theorem, seed existence, and actual
 polar-carrier theorem reports only `propext`, `Classical.choice`, and `Quot.sound`.

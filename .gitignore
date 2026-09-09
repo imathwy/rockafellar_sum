@@ -1,5 +1,5 @@
 # Lean/Lake build products and generated compiler state.
-/.lake/
+/.lake
 *.olean
 *.olean.private
 *.olean.server
@@ -21,6 +21,7 @@
 /Scratch*.lean
 /scripts/
 /source/
+/rockafellar_sum_report.tex
 /FORMALIZATION_ITINERARY.md
 /PROGRESS_AND_PARALLEL_PLAN.md
 *.orig
