@@ -50,6 +50,10 @@ theorem seedBase_zero (d : C0Seq) (s : ℝ) :
 /-- The canonical first-axis direction used by the S3 construction. -/
 def axisDirection : C0Seq := c0Single 1 1
 
+/-- The distinguished axis reads one at coordinate one and zero elsewhere. -/
+theorem axisDirection_apply (n : ℕ) : axisDirection n = if n = 1 then 1 else 0 := by
+  exact c0Single_apply 1 1 n
+
 /-- The axis direction pairs with a unit difference at coordinate `1` as one
 when the second coordinate is distinct. -/
 theorem pairingL_axisDirection_unitDifference {r : ℕ} (hr : r ≠ 1) :
@@ -61,6 +65,11 @@ theorem pairingL_axisDirection_unitDifference {r : ℕ} (hr : r ≠ 1) :
 noncomputable def axisSeedBase (a : L1Seq) (s : ℝ) :
     parametrizedSubspace axisDirection :=
   seedBase a s
+
+/-- Axis seed bases retain their prescribed positive coordinate. -/
+theorem positiveCoordinate_axisSeedBase (hd : axisDirection ≠ 0) (a : L1Seq) (s : ℝ) :
+    positiveCoordinate axisDirection hd (axisSeedBase a s) = s := by
+  exact positiveCoordinate_seedBase hd a s
 
 /-- For a scaled unit difference away from coordinate one, the axis seed base
 has vanishing scalar negative coordinate. -/
