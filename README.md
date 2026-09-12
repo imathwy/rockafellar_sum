@@ -4,7 +4,7 @@ Lean 4 and mathlib formalization of a counterexample to the Banach-space
 extension of Rockafellar's sum theorem. The construction takes place on real
 `c₀`, with its continuous dual represented by `ℓ¹`.
 
-**Authors:** Junyu Zhang, Zichen Wang, Benqi Liu, and Zaiwen Wen.
+**Authors:** Junyu Zhang, Jinbiao Chen, Zichen Wang, Benqi Liu, and Zaiwen Wen.
 
 [Main theorem](#main-theorem) · [Quick start](#quick-start) ·
 [Research history](#research-history) · [Comparator verification](#comparator-verification)
