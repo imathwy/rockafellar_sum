@@ -69,23 +69,32 @@ and actual polar-carrier theorem reports only `propext`, `Classical.choice`, and
 
 ## Comparator verification
 
-Independent declaration verification is tracked separately using
-[`leanprover/comparator`](https://github.com/leanprover/comparator). Comparator
-checks Challenge/Solution declaration identity, kernel acceptance, and the
-configured axiom budget. The intended release is `v4.32.0`, matching this
-repository's Lean toolchain.
+The following proof interfaces were checked with
+[`leanprover/comparator`](https://github.com/leanprover/comparator) `v4.32.0`
+on 12 September 2026, against source commit
+[`159d2fb`](https://github.com/imathwy/rockafellar_sum/commit/159d2fb0e9e62cca176592c786cbe1614ef0a1ae).
+Comparator compared separately stated Challenge declarations with Solution
+wrappers applying the repository theorems, checked the permitted axioms, and
+replayed the exported Solution in Lean's default kernel.
 
 | Target | Lean / kernel audit | Comparator status |
 | --- | --- | --- |
-| `C0Seq.exists_maximalMonotone_sum_not_maximal` | Passed; standard three axioms only | Pending |
-| `Lorentz.exists_seedCounterexample` | Passed; standard three axioms only | Pending |
-| `Lorentz.seedPoint_polar_subset_carrier` | Passed; standard three axioms only | Pending |
+| `C0Seq.exists_maximalMonotone_sum_not_maximal` | Passed; standard three axioms only | `Your solution is okay!` |
+| `Lorentz.exists_seedCounterexample` | Passed; standard three axioms only | `Your solution is okay!` |
+| `Lorentz.seedPoint_polar_subset_carrier` | Passed; standard three axioms only | `Your solution is okay!` |
 
-No completed Comparator Challenge/Solution run is recorded for this version.
-The Lean checks above are not a substitute for that verification. Successful
-Comparator results will be recorded against the exact checked commit when
-available. Comparator does not establish correspondence between the formal
-definitions and the manuscript; that is a separate semantic review.
+Both runs exited successfully and reported `Lean default kernel accepts the
+solution`. The axiom budget was exactly `propext`, `Classical.choice`, and
+`Quot.sound`; Nanoda was not enabled. Builds and exports used real landrun
+v0.1.17 through a delimiter-only command-line adapter. Temporary wrappers and
+build artifacts stayed outside the tracked repository.
+
+This was a trusted-source local verification, run in a root session without
+the upstream `systemd-run` AF_UNIX restriction; it does not claim the full
+adversarial-isolation guarantees described upstream. Comparator does not
+establish correspondence with the manuscript. See the
+[verification record](docs/comparator-verification.md) for tool revisions,
+configuration and result details.
 
 ## Code scale
 
