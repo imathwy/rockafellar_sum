@@ -89,8 +89,9 @@ everywhere defined and single-valued for $\lambda>0$.
 
 Rockafellar's classical sum theorem assumes reflexivity and the condition
 
-$$\mathrm{dom}\,A\cap\mathrm{int}(\mathrm{dom}\,B)
-\ne\varnothing.$$
+$$
+\mathrm{dom}(A) \cap \mathrm{int}(\mathrm{dom}(B)) \neq \varnothing
+$$
 
 The general sum problem asks whether this condition suffices in an arbitrary
 real Banach space. The space `c₀` tests the nonreflexive boundary. Here one
