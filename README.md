@@ -89,7 +89,7 @@ everywhere defined and single-valued for $\lambda>0$.
 
 Rockafellar's classical sum theorem assumes reflexivity and the condition
 
-$$\operatorname{dom}A\cap\operatorname{int}(\operatorname{dom}B)
+$$\mathrm{dom}\,A\cap\mathrm{int}(\mathrm{dom}\,B)
 \ne\varnothing.$$
 
 The general sum problem asks whether this condition suffices in an arbitrary
